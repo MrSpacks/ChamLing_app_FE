@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import "./i18n"; // Инициализация i18next
 import "./App.css";
 import "./reset.css";
 
