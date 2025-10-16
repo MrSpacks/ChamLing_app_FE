@@ -1,8 +1,7 @@
 .container {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -10,8 +9,13 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 .logo {
   width: 100px;
   height: auto;
+}
+main {
+  text-align: center;
 }
