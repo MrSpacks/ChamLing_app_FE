@@ -1,4 +1,16 @@
 {
   "welcome": "Hello! Welcome to our app.",
-  "language": "Language"
+  "language": "Language",
+  "login": "Login",
+  "email": "Email",
+  "password": "Password",
+  "duplicate password": "Duplicate Password",
+  "loading": "Loading...",
+  "cancel": "Cancel",
+  "register": "Register",
+  "back": "Back.",
+  "add_word": "Add Word",
+  "search": "Search...",
+  "logout": "Logout",
+  "no_words": "No words available. Please add some words."
 }
