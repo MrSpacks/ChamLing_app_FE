@@ -2,23 +2,19 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 // Регистрация пользователя
 export async function registerUser(email, password) {
-  const response = await fetch(`${API_URL}/api/auth/register/`, {
+  const res = await fetch(`${API_URL}/api/auth/register/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });
 
-  if (!response.ok) {
-    const text = await response.text(); // Получаем текст ответа для отладки
-    try {
-      const err = JSON.parse(text); // Пробуем разобрать как JSON
-      throw new Error(err.detail || "Registration failed");
-    } catch (parseErr) {
-      throw new Error(`Server error: ${text.substring(0, 100)}...`); // Показываем начало HTML
-    }
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.detail || "Registration failed");
   }
 
-  return response.json(); // Возвращаем JSON при успехе
+  return data; // { access, refresh }
 }
 
 // Логин пользователя

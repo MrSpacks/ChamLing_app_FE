@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { loginUser } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ export default function LoginModal({ onClose }) {
       localStorage.setItem("token", data.access);
       alert("Login successful!");
       onClose();
+      navigate("/dashboard");
     } catch (err) {
       setError(err.message);
     } finally {

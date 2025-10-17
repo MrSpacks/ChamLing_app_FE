@@ -28,7 +28,7 @@ export default function RegisterPage() {
       localStorage.setItem("accessToken", response.access);
       localStorage.setItem("refreshToken", response.refresh);
       alert(t("registration_successful"));
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       console.error("Registration error:", err); // Логируем полную ошибку
       setError(
