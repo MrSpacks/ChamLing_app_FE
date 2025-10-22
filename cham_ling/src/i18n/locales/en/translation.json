@@ -1,5 +1,6 @@
 {
   "welcome": "Hello! Welcome to our app.",
+  "welcome.subtitle": "Your personal dictionary for learning Cham language.",
   "language": "Language",
   "login": "Login",
   "email": "Email",
@@ -12,5 +13,9 @@
   "add_word": "Add Word",
   "search": "Search...",
   "logout": "Logout",
-  "no_words": "No words available. Please add some words."
+  "no_words": "No words available. Please add some words.",
+  "footer": {
+    "rights": "All rights reserved.",
+    "madeWith": "Made with ❤️"
+  }
 }

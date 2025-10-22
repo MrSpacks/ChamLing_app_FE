@@ -11,14 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-/* global styles */
-
-.container {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  margin: 0 auto;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}

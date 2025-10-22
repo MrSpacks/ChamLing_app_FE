@@ -1,15 +1,21 @@
 :root {
-  --primary-blue: rgb(0, 0, 255);
-  --secondary-blue: rgb(96, 96, 182);
-
+  --primary-green: rgb(14, 107, 60);
+  --secondary-green: rgb(109, 182, 96);
+  /* text colors */
   --text-primary-light: black;
-  --text-primary-dark: white;
+  --text-primary-dark: rgb(254, 254, 246);
 
-  --text-secondary-light: rgb(70, 70, 70);
-  --text-secondary-dark: rgb(160, 160, 160);
+  --text-secondary-light: white;
+  --text-secondary-dark: rgb(254, 254, 246);
+  /* button colors */
+  --bg-button: rgb(14, 107, 60);
+  --bg-button-hover-light: rgb(254, 254, 246);
+  --bg-button-hover-dark: rgb(7, 16, 13);
+  --button-hover-text-light: rgb(14, 107, 60);
+  --button-hover-text-dark: rgb(254, 254, 246);
 
-  --bg-primary-light: white;
-  --bg-primary-dark: black;
+  --bg-primary-light: rgb(254, 254, 246);
+  --bg-primary-dark: rgb(7, 16, 13);
 
   --bg-secondary-light: rgb(212, 212, 212);
   --bg-secondary-dark: rgb(34, 34, 34);
@@ -24,6 +30,8 @@
   --bg-primary: var(--bg-primary-light);
   --bg-secondary: var(--bg-secondary-light);
   --bg-navbar: var(--bg-navbar-light);
+  --bg-button-hover: var(--bg-button-hover-light);
+  --button-hover-text: var(--button-hover-text-light);
 }
 
 .dark-theme {
@@ -32,4 +40,25 @@
   --bg-primary: var(--bg-primary-dark);
   --bg-secondary: var(--bg-secondary-dark);
   --bg-navbar: var(--bg-navbar-dark);
+  --bg-button-hover: var(--bg-button-hover-dark);
+  --button-hover-text: var(--button-hover-text-dark);
+}
+
+/* global styles */
+body {
+  box-sizing: border-box;
+}
+.wrapper {
+  width: 100%;
+  background-color: var(--bg-primary);
+}
+main {
+  text-align: center;
+}
+.container {
+  color: var(--text-primary);
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }

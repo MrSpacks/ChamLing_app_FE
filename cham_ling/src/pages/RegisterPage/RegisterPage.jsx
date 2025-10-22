@@ -42,7 +42,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>{t("register")}</h1>
       <form onSubmit={handleSubmit}>
         <div>
