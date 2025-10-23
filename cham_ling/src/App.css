@@ -3,7 +3,7 @@
   --secondary-green: rgb(109, 182, 96);
   /* text colors */
   --text-primary-light: black;
-  --text-primary-dark: rgb(254, 254, 246);
+  --text-primary-dark: rgba(179, 179, 179, 0.82);
 
   --text-secondary-light: white;
   --text-secondary-dark: rgb(254, 254, 246);
@@ -47,6 +47,8 @@
 /* global styles */
 body {
   box-sizing: border-box;
+
+  font-family: "Roboto", sans-serif;
 }
 .wrapper {
   width: 100%;

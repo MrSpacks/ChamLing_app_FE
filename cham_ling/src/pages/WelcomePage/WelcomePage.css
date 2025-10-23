@@ -19,12 +19,14 @@ main {
   justify-content: center;
   gap: 10px;
   height: calc(100vh - 160px);
+  font-family: "Roboto", sans-serif;
 }
 .titleWP {
   color: var(--primary-green);
   font-size: 3rem;
   font-weight: bold;
   margin: 20px 0;
+  font-family: "Roboto", sans-serif;
 }
 .button_group {
   display: flex;
@@ -36,4 +38,19 @@ main {
   color: var(--text-primary);
   width: 30px;
   height: 30px;
+}
+
+@media (min-width: 600px) {
+  .logoContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .titleWP {
+    font-size: 3rem;
+    margin: 10px 0;
+  }
+  .logo {
+    width: 150px;
+  }
 }

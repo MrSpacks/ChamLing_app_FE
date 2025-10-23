@@ -9,9 +9,17 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <select value={i18n.language} onChange={changeLanguage}>
-      <option value="en">English</option>
-      <option value="ru">Русский</option>
+    <select
+      className="change_language"
+      value={i18n.language}
+      onChange={changeLanguage}
+    >
+      <option className="option_language" value="en">
+        English
+      </option>
+      <option className="option_language" value="ru">
+        Русский
+      </option>
     </select>
   );
 }

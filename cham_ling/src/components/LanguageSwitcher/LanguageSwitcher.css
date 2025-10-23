@@ -1,0 +1,23 @@
+.change_language {
+  border-radius: 8px;
+  padding: 6px 12px;
+  background-color: var(--bg-button);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-secondary);
+  border: 1px solid var(--text-primary);
+}
+.change_language:hover {
+  background-color: var(--bg-button-hover);
+  color: var(--button-hover-text);
+}
+.option_language {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.option_language:hover {
+  background-color: var(--bg-button-hover);
+  color: var(--button-hover-text);
+}

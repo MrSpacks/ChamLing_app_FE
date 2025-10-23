@@ -2,7 +2,7 @@ import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher
 import { useTranslation } from "react-i18next";
 import "./WelcomePage.css";
 import { useState } from "react";
-import LoginModal from "../../components/LoginModal";
+import LoginModal from "../../components/LoginModal/LoginModal";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Buttons/Button";
 import "@theme-toggles/react/css/Classic.css";
@@ -33,8 +33,10 @@ const WelcomePage = () => {
           />
         </header>
         <main>
-          <img src="logo.png" alt="Logo" className="logo" />
-          <h1 className="titleWP">ChamLing</h1>
+          <div className="logoContainer">
+            <img src="logo.png" alt="Logo" className="logo" />
+            <h1 className="titleWP">ChamLing</h1>
+          </div>
           <h1>{t("welcome")}</h1>
           <div>
             <h2 className="subtitle">{t("welcome.subtitle")}</h2>
@@ -49,7 +51,9 @@ const WelcomePage = () => {
             {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
           </div>
         </main>
-        <Footer />
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </div>
   );
