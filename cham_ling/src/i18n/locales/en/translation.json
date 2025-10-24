@@ -9,11 +9,12 @@
   "loading": "Loading...",
   "cancel": "Cancel",
   "register": "Register",
-  "back": "Back.",
+  "back": "Back",
   "add_word": "Add Word",
   "search": "Search...",
   "logout": "Logout",
   "no_words": "No words available. Please add some words.",
+  "repeat_password": "Repeat Password",
 
   "footer": {
     "rights": "All rights reserved.",
