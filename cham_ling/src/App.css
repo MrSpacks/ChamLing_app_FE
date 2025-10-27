@@ -22,9 +22,12 @@
 
   --bg-navbar-light: rgb(104, 104, 255);
   --bg-navbar-dark: rgb(29, 29, 58);
+  --bg-input-light: rgb(255, 255, 255);
+  --bg-input-dark: rgb(20, 34, 35);
 }
 
 .light-theme {
+  --bg-input: var(--bg-input-light);
   --text-primary: var(--text-primary-light);
   --text-secondary: var(--text-secondary-light);
   --bg-primary: var(--bg-primary-light);
@@ -35,6 +38,7 @@
 }
 
 .dark-theme {
+  --bg-input: var(--bg-input-dark);
   --text-primary: var(--text-primary-dark);
   --text-secondary: var(--text-secondary-dark);
   --bg-primary: var(--bg-primary-dark);

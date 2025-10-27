@@ -3,6 +3,8 @@
   "welcome.subtitle": "Your personal dictionary for learning Cham language.",
   "language": "Language",
   "login": "Login",
+  "username": "Username",
+  "no_account": "Don't have an account?",
   "email": "Email",
   "password": "Password",
   "duplicate password": "Duplicate Password",

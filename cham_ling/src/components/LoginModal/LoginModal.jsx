@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./LoginModal.css";
 import { useTranslation } from "react-i18next";
 import Button from "../Buttons/Button";
+import { FiMail } from "react-icons/fi";
+import { FaLock } from "react-icons/fa";
 
 export default function LoginModal({ onClose }) {
   const [email, setEmail] = useState("");
@@ -42,20 +44,26 @@ export default function LoginModal({ onClose }) {
         <h2>{t("login")}</h2>
         <form onSubmit={handleSubmit}>
           <div className="input_container">
-            <input
-              type="email"
-              placeholder={t("email")}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <input
-              type="password"
-              placeholder={t("password")}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="register_input input_with_icon">
+              <FiMail className="input_icon" />
+              <input
+                type="email"
+                placeholder={t("email")}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="register_input input_with_icon">
+              <FaLock className="input_icon" />
+              <input
+                type="password"
+                placeholder={t("password")}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
           </div>
 
           {error && <p style={{ color: "red" }}>{error}</p>}
@@ -69,6 +77,13 @@ export default function LoginModal({ onClose }) {
             <Button type="button" onClick={onClose} text={t("cancel")} />
           </div>
         </form>
+        <p>
+          {t("no_account")}{" "}
+          <span className="navigate_btn" onClick={() => navigate("/register")}>
+            {" "}
+            {t("register")}
+          </span>
+        </p>
       </div>
     </div>
   );

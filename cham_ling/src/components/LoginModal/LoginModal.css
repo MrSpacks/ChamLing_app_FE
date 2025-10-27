@@ -37,14 +37,25 @@
   gap: 10px;
   margin-bottom: 10px;
 }
-.input_container input {
+/* .input_container */
+input {
   padding: 10px;
-  border: 1px solid var(--text-primary);
+  /* border: 1px solid var(--text-primary); */
   border-radius: 8px;
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-input);
+  color: var(--text-primary);
+}
+input:active {
+  outline: none;
+  border: 2px solid var(--text-primary);
+}
+input:focus {
+  outline: none;
+  border: 2px solid var(--text-primary);
+  box-shadow: 0 0 5px var(--text-primary);
 }
 
 .button_group_modal {
