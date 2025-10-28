@@ -20,5 +20,12 @@
   "footer": {
     "rights": "Все права защищены.",
     "madeWith": "Сделано с ❤️"
+  },
+  "dashboard": {
+    "title": "Панель управления",
+    "button_my-dict": "Мой словарь",
+    "button_create-dict": "Создать словарь",
+    "button_buy_dict": "Купить словарь",
+    "button_settings": "Настройки"
   }
 }

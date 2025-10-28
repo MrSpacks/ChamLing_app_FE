@@ -21,5 +21,12 @@
   "footer": {
     "rights": "All rights reserved.",
     "madeWith": "Made with ❤️"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "button_my-dict": "My Dictionary",
+    "button_create-dict": "Create Dictionary",
+    "button_buy_dict": "Buy Dictionary",
+    "button_settings": "Settings"
   }
 }
