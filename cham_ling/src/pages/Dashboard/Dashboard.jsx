@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 import { useTranslation } from "react-i18next";
-import { useNavigate, Outlet } from "react-router-dom";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
 import { Classic } from "@theme-toggles/react";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../../Theme";
@@ -15,10 +15,22 @@ const Dashboard = () => {
   const { toggleTheme } = useContext(ThemeContext);
   const [isToggled, setToggle] = useState(false);
   const { t } = useTranslation();
-  const [showButtons, setShowButtons] = useState(false);
+  const [showButtons, setShowButtons] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleButtons = () => setShowButtons((prev) => !prev);
+  
+  const isActive = (path) => {
+    if (path === "/dashboard/my-dict") {
+      return location.pathname === "/dashboard/my-dict" || location.pathname === "/dashboard";
+    }
+    // Для детальной страницы словаря не подсвечиваем активные ссылки
+    if (location.pathname.startsWith("/dashboard/dictionary/")) {
+      return false;
+    }
+    return location.pathname === path;
+  };
 
   return (
     <div className="wrapper">
@@ -45,9 +57,9 @@ const Dashboard = () => {
         </div>
         <div className="dashboard_content">
           <div className="dashboard_panel">
-            <div className="dashboard_desktop">
+            <div className={`dashboard_desktop ${showButtons ? "show_labels" : ""} ${showButtons ? "show_buttons" : ""}`}>
               <button
-                className="dash_button_desktop"
+                className={`dash_button_desktop ${isActive("/dashboard/my-dict") ? "active" : ""}`}
                 onClick={() => navigate("/dashboard/my-dict")}
               >
                 <FaBook className="book_icon" />
@@ -59,7 +71,7 @@ const Dashboard = () => {
               </button>
 
               <button
-                className="dash_button_desktop"
+                className={`dash_button_desktop ${isActive("/dashboard/add-dict") ? "active" : ""}`}
                 onClick={() => navigate("/dashboard/add-dict")}
               >
                 <FaBookMedical className="book_icon" />
@@ -71,7 +83,7 @@ const Dashboard = () => {
               </button>
 
               <button
-                className="dash_button_desktop"
+                className={`dash_button_desktop ${isActive("/dashboard/buy-dict") ? "active" : ""}`}
                 onClick={() => navigate("/dashboard/buy-dict")}
               >
                 <FaShoppingCart className="book_icon" />
@@ -83,7 +95,7 @@ const Dashboard = () => {
               </button>
 
               <button
-                className="dash_button_desktop"
+                className={`dash_button_desktop ${isActive("/dashboard/settings") ? "active" : ""}`}
                 onClick={() => navigate("/dashboard/settings")}
               >
                 <FaCog className="book_icon" />
@@ -98,28 +110,28 @@ const Dashboard = () => {
 
           <div className="dashboard_mobile">
             <button
-              className="dash_button_mobile"
+              className={`dash_button_mobile ${isActive("/dashboard/my-dict") ? "active" : ""}`}
               onClick={() => navigate("/dashboard/my-dict")}
             >
-              {t("dashboard.button_my-dict")}
+              <FaBook className="mobile_icon" />
             </button>
             <button
-              className="dash_button_mobile"
+              className={`dash_button_mobile ${isActive("/dashboard/add-dict") ? "active" : ""}`}
               onClick={() => navigate("/dashboard/add-dict")}
             >
-              {t("dashboard.button_create-dict")}
+              <FaBookMedical className="mobile_icon" />
             </button>
             <button
-              className="dash_button_mobile"
+              className={`dash_button_mobile ${isActive("/dashboard/buy-dict") ? "active" : ""}`}
               onClick={() => navigate("/dashboard/buy-dict")}
             >
-              {t("dashboard.button_buy_dict")}
+              <FaShoppingCart className="mobile_icon" />
             </button>
             <button
-              className="dash_button_mobile"
+              className={`dash_button_mobile ${isActive("/dashboard/settings") ? "active" : ""}`}
               onClick={() => navigate("/dashboard/settings")}
             >
-              {t("dashboard.button_settings")}
+              <FaCog className="mobile_icon" />
             </button>
           </div>
 

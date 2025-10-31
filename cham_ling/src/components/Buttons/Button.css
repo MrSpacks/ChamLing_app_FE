@@ -9,8 +9,13 @@
   transition: all 0.3s ease;
   border: solid 1px var(--bg-primary);
 }
-.custom-button:hover {
+.custom-button:hover:not(:disabled) {
   background-color: var(--bg-button-hover);
   border: solid 1px var(--button-hover-text);
   color: var(--button-hover-text);
+}
+
+.custom-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

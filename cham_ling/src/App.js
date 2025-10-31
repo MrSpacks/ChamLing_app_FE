@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./i18n";
 import "./App.css";
 import "./reset.css";
@@ -12,10 +12,18 @@ import Settings from "./pages/Settings/Settings";
 import AddDict from "./pages/AddDict/AddDict";
 import BuyDict from "./pages/BuyDict/BuyDict";
 import MyDict from "./pages/MyDict/MyDict";
+import DictionaryDetail from "./pages/DictionaryDetail/DictionaryDetail";
 import ProtectedRoute from "./components/ProtectedRoute";
+import InstallPrompt from "./components/InstallPrompt/InstallPrompt";
+import { initInstallPrompt } from "./utils/pwaInstall";
 
 function App() {
   const { theme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    // Инициализируем отслеживание установки PWA
+    initInstallPrompt();
+  }, []);
 
   return (
     <div className={`App ${theme}`}>
@@ -39,7 +47,20 @@ function App() {
           <Route path="buy-dict" element={<BuyDict />} />
           <Route path="my-dict" element={<MyDict />} />
         </Route>
+        
+        {/* Детальная страница словаря вне Dashboard */}
+        <Route
+          path="/dashboard/dictionary/:id"
+          element={
+            <ProtectedRoute>
+              <DictionaryDetail />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
+      
+      {/* Компонент предложения установки PWA */}
+      <InstallPrompt />
     </div>
   );
 }

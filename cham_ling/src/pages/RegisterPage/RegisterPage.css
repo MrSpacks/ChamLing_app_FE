@@ -41,6 +41,34 @@
   text-decoration: underline;
 }
 
+.input_error {
+  background-color: rgba(231, 76, 60, 0.1) !important;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2) !important;
+}
+
+.input_valid {
+  background-color: rgba(76, 175, 80, 0.05) !important;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1) !important;
+}
+
+.error_text {
+  color: #e74c3c;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+.password_strength {
+  color: var(--text-secondary, #666);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 @media (min-width: 600px) {
   .back_button {
     display: none;

@@ -49,10 +49,38 @@
 }
 
 /* global styles */
+
+/* Global box-sizing to avoid overflow due to paddings/margins */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
   box-sizing: border-box;
-
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Скрытие скроллбара для body */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Media elements should not overflow */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
 }
 .wrapper {
   width: 100%;
@@ -64,10 +92,23 @@ main {
 .container {
   margin: 0 auto;
   color: var(--text-primary);
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  padding: 20px 20px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Скрытие скроллбара для контейнера */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (max-width: 600px) {

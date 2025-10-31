@@ -1,0 +1,219 @@
+.notification_setup {
+  background: var(--bg-secondary, #ffffff);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+  border: 2px solid var(--primary-green, #4caf50);
+}
+
+.notification_setup_header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.notification_icon {
+  font-size: 3rem;
+  color: var(--primary-green, #4caf50);
+  margin-bottom: 1rem;
+}
+
+.notification_setup_header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+  margin-bottom: 0.5rem;
+}
+
+.notification_setup_description {
+  font-size: 0.95rem;
+  color: var(--text-secondary, #666);
+  line-height: 1.6;
+}
+
+.permission_request {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.permission_request p {
+  font-size: 1rem;
+  color: var(--text-primary, #333);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.permission_button {
+  background: var(--primary-green, #4caf50);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.permission_button:hover:not(:disabled) {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.permission_button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.time_selection {
+  padding: 1rem 0;
+}
+
+.time_selector_label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+}
+
+.time_icon {
+  color: var(--primary-green, #4caf50);
+  font-size: 1.25rem;
+}
+
+.time_selectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.time_selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.time_selector label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary, #666);
+  text-align: center;
+}
+
+.time_input {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--bg-secondary, #e0e0e0);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+  background: var(--bg-primary, #ffffff);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+  text-align: center;
+}
+
+.time_input:hover {
+  border-color: var(--primary-green, #4caf50);
+}
+
+.time_input:focus {
+  outline: none;
+  border-color: var(--primary-green, #4caf50);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.time_separator {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary, #333);
+  margin-top: 1.5rem;
+}
+
+.selected_time_preview {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 12px;
+  color: var(--primary-green, #4caf50);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.notification_setup_actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.save_button {
+  background: var(--primary-green, #4caf50);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 200px;
+}
+
+.save_button:hover:not(:disabled) {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.save_button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.skip_button {
+  background: transparent;
+  color: var(--text-secondary, #666);
+  border: 2px solid var(--bg-secondary, #e0e0e0);
+  padding: 0.875rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: 200px;
+}
+
+.skip_button:hover {
+  border-color: var(--text-secondary, #666);
+  color: var(--text-primary, #333);
+}
+
+@media (max-width: 768px) {
+  .notification_setup {
+    padding: 1.5rem;
+  }
+
+  .time_selectors {
+    flex-wrap: wrap;
+  }
+
+  .notification_setup_actions {
+    flex-direction: column;
+  }
+
+  .save_button,
+  .skip_button {
+    max-width: 100%;
+  }
+}
+
