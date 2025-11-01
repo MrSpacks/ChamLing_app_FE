@@ -446,7 +446,8 @@ const AddDict = () => {
       <h1 className="add_dict_title">{t("AddDict.title")}</h1>
 
       <form onSubmit={handleSubmit} className="add_dict_form">
-        <div className="add_dict_form_part1">
+        {/* Часть 1: Основная информация */}
+        <div className="add_dict_form_part">
           {/* Название */}
           <div className="form_group">
             <label htmlFor="name">{t("AddDict.form.title")}</label>
@@ -492,22 +493,64 @@ const AddDict = () => {
             )}
           </div>
 
-          {/* Изображение обложки */}
-          <div className="form_group">
-            <div className="checkbox_group">
-              <label>
-                <input
-                  type="checkbox"
-                  name="use_custom_image"
-                  checked={useCustomImage}
-                  onChange={handleChange}
-                  disabled={loading}
-                />
-                {t("AddDict.form.use_custom_image") || "Добавить свое изображение"}
+          {/* Языки */}
+          <div className="form_row">
+            <div className="form_group half">
+              <label htmlFor="source_lang">
+                {t("AddDict.form.source_lang")}
               </label>
+              <select
+                id="source_lang"
+                name="source_lang"
+                value={formData.source_lang}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={`${errors.source_lang ? "input_error" : ""} ${touched.source_lang && !errors.source_lang && formData.source_lang ? "input_valid" : ""}`}
+                disabled={loading}
+              >
+                <option value="">{t("AddDict.select_lang")}</option>
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+              {errors.source_lang && (
+                <span className="error_text">{errors.source_lang}</span>
+              )}
             </div>
 
-            {useCustomImage && (
+            <div className="form_group half">
+              <label htmlFor="target_lang">
+                {t("AddDict.form.target_lang")}
+              </label>
+              <select
+                id="target_lang"
+                name="target_lang"
+                value={formData.target_lang}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                className={`${errors.target_lang ? "input_error" : ""} ${touched.target_lang && !errors.target_lang && formData.target_lang ? "input_valid" : ""}`}
+                disabled={loading}
+              >
+                <option value="">{t("AddDict.select_lang")}</option>
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.name}
+                  </option>
+                ))}
+              </select>
+              {errors.target_lang && (
+                <span className="error_text">{errors.target_lang}</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Часть 2: Изображение обложки */}
+        {useCustomImage && (
+          <div className="add_dict_form_part">
+            <div className="form_group">
               <div className="image_source_options">
                 <div className="image_source_selector">
                   <label>
@@ -608,70 +651,27 @@ const AddDict = () => {
                   </div>
                 )}
               </div>
-            )}
-
-            {!useCustomImage && (
-              <small className="form_hint">
-                {t("AddDict.hints.cover_image_auto") || "Если не указано, изображение будет подобрано автоматически"}
-              </small>
-            )}
-          </div>
-        </div>
-        <div className="add_dict_form_part2">
-          {/* Языки */}
-          <div className="form_row">
-            <div className="form_group half">
-              <label htmlFor="source_lang">
-                {t("AddDict.form.source_lang")}
-              </label>
-              <select
-                id="source_lang"
-                name="source_lang"
-                value={formData.source_lang}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`${errors.source_lang ? "input_error" : ""} ${touched.source_lang && !errors.source_lang && formData.source_lang ? "input_valid" : ""}`}
-                disabled={loading}
-              >
-                <option value="">{t("AddDict.select_lang")}</option>
-                {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
-              {errors.source_lang && (
-                <span className="error_text">{errors.source_lang}</span>
-              )}
             </div>
+          </div>
+        )}
 
-            <div className="form_group half">
-              <label htmlFor="target_lang">
-                {t("AddDict.form.target_lang")}
+        {/* Часть 3: Чекбоксы и кнопка */}
+        <div className="add_dict_form_part">
+          <div className="form_group">
+            <div className="checkbox_group">
+              <label>
+                <input
+                  type="checkbox"
+                  name="use_custom_image"
+                  checked={useCustomImage}
+                  onChange={handleChange}
+                  disabled={loading}
+                />
+                {t("AddDict.form.add_image") || "Добавить изображение"}
               </label>
-              <select
-                id="target_lang"
-                name="target_lang"
-                value={formData.target_lang}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`${errors.target_lang ? "input_error" : ""} ${touched.target_lang && !errors.target_lang && formData.target_lang ? "input_valid" : ""}`}
-                disabled={loading}
-              >
-                <option value="">{t("AddDict.select_lang")}</option>
-                {languages.map((lang) => (
-                  <option key={lang.code} value={lang.code}>
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
-              {errors.target_lang && (
-                <span className="error_text">{errors.target_lang}</span>
-              )}
             </div>
           </div>
 
-          {/* Продажа */}
           <div className="form_group checkbox_group">
             <label>
               <input
@@ -680,7 +680,7 @@ const AddDict = () => {
                 checked={formData.is_for_sale}
                 onChange={handleChange}
               />
-              {t("AddDict.form.sell_dict")}
+              {t("AddDict.form.sell_dict_short") || "Продать словарь"}
             </label>
           </div>
 
@@ -725,26 +725,37 @@ const AddDict = () => {
           )}
 
           {formData.is_for_sale && formData.allow_temporary_access && (
-            <div className="form_group indent">
-              <label htmlFor="temporary_days">
-                {t("AddDict.form.temp_days")}
-              </label>
-              <input
-                type="number"
-                id="temporary_days"
-                name="temporary_days"
-                min="1"
-                value={formData.temporary_days}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                className={`${errors.temporary_days ? "input_error" : ""} ${touched.temporary_days && !errors.temporary_days && formData.temporary_days ? "input_valid" : ""}`}
-                disabled={loading}
-              />
-              {errors.temporary_days && (
-                <span className="error_text">{errors.temporary_days}</span>
-              )}
-            </div>
+              <div className="form_group indent">
+                <label htmlFor="temporary_days">
+                  {t("AddDict.form.temp_days")}
+                </label>
+                <input
+                  type="number"
+                  id="temporary_days"
+                  name="temporary_days"
+                  min="1"
+                  value={formData.temporary_days}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={`${errors.temporary_days ? "input_error" : ""} ${touched.temporary_days && !errors.temporary_days && formData.temporary_days ? "input_valid" : ""}`}
+                  disabled={loading}
+                />
+                {errors.temporary_days && (
+                  <span className="error_text">{errors.temporary_days}</span>
+                )}
+                <small className="form_hint">
+                  {t("AddDict.hints.trial_hint") || "Пользователи смогут использовать словарь бесплатно в течение указанного количества дней"}
+                </small>
+              </div>
           )}
+
+          <div className="form_group" style={{ marginTop: "1rem" }}>
+            <Button 
+              type="submit" 
+              text={loading ? t("loading") || "Создание..." : t("AddDict.form.create")} 
+              disabled={loading}
+            />
+          </div>
         </div>
         
         {/* Сообщение об успехе */}
@@ -761,12 +772,6 @@ const AddDict = () => {
             {errors.submit}
           </div>
         )}
-        
-        <Button 
-          type="submit" 
-          text={loading ? t("loading") || "Создание..." : t("AddDict.form.create")} 
-          disabled={loading}
-        />
       </form>
     </div>
   );

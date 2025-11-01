@@ -13,6 +13,95 @@
   text-align: center;
 }
 
+/* Поиск и фильтры */
+.search_filters_container {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search_input_wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.search_icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-primary);
+  opacity: 0.6;
+  font-size: 1rem;
+}
+
+.search_input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  border: 2px solid var(--bg-primary);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.search_input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+.search_input::placeholder {
+  color: var(--text-primary);
+  opacity: 0.5;
+}
+
+.filters_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.filter_group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter_label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  opacity: 0.8;
+}
+
+.filter_select {
+  padding: 0.75rem;
+  border: 2px solid var(--bg-primary);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.filter_select:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+.results_count {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  opacity: 0.7;
+  text-align: center;
+}
+
 .loading,
 .error_message {
   text-align: center;
@@ -196,6 +285,16 @@
   .page_title {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
+  }
+
+  .search_filters_container {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filters_row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .dictionaries_grid {

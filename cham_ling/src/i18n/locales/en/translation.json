@@ -40,9 +40,11 @@
       "source_lang": "Source Language",
       "target_lang": "Target Language",
       "sell_dict": "Sell this dictionary",
+      "sell_dict_short": "Sell dictionary",
+      "add_image": "Add image",
       "price": "Price ($)",
-      "allow_temp_access": "Allow temporary access",
-      "temp_days": "Access duration (days)",
+      "allow_temp_access": "Allow free trial",
+      "temp_days": "Number of free trial days",
       "create": "Create Dictionary",
       "cover_image": "Cover Image",
       "use_custom_image": "Add custom image",
@@ -60,7 +62,8 @@
       "min_price": "Minimum price: $0.50",
       "cover_image": "Upload an image from your device or it will be selected automatically",
       "cover_image_auto": "If not specified, image will be selected automatically",
-      "camera": "Click to open camera and take photo"
+      "camera": "Click to open camera and take photo",
+      "trial_hint": "Users will be able to use the dictionary for free for the specified number of days"
     },
     "errors": {
       "title_required": "Title is required",
@@ -165,12 +168,19 @@
     "title": "Dictionary Store",
     "empty": "No dictionaries for sale yet",
     "buy": "Buy",
-    "temp_access": "Temporary access available",
+    "temp_access": "Free trial available",
     "coming_soon": "Purchase function coming soon",
     "purchase_success": "Dictionary purchased successfully!",
     "owner_message": "You are the author of this dictionary",
     "has_image": "Has image",
-    "words": "words"
+    "words": "words",
+    "search_placeholder": "Search by name...",
+    "source_lang": "Source Language",
+    "target_lang": "Target Language",
+    "all_languages": "All Languages",
+    "results_count": "Found:",
+    "of": "of",
+    "no_results": "No results found"
   },
   "PurchaseModal": {
     "title": "Purchase Dictionary",

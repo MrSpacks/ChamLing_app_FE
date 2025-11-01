@@ -712,6 +712,9 @@ const EditDict = ({ dictionary, onSuccess, onCancel }) => {
                       {errors.temporary_days}
                     </span>
                   )}
+                  <small className="form_hint">
+                    {t("AddDict.hints.trial_hint") || "Пользователи смогут использовать словарь бесплатно в течение указанного количества дней"}
+                  </small>
                 </div>
               )}
             </>

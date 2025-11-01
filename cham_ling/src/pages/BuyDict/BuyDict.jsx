@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-import { FaImage } from "react-icons/fa";
+import { FaImage, FaSearch } from "react-icons/fa";
 import { getMarketplaceDictionaries } from "../../api/auth";
 import PurchaseModal from "../../components/PurchaseModal/PurchaseModal";
 import "./BuyDict.css";
@@ -12,6 +12,9 @@ const BuyDict = () => {
   const [error, setError] = useState(null);
   const [selectedDictionary, setSelectedDictionary] = useState(null);
   const [showPurchaseModal, setShowPurchaseModal] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sourceLangFilter, setSourceLangFilter] = useState("");
+  const [targetLangFilter, setTargetLangFilter] = useState("");
 
   useEffect(() => {
     loadDictionaries();
@@ -50,6 +53,31 @@ const BuyDict = () => {
     setSelectedDictionary(null);
   };
 
+  // Получаем уникальные языки для фильтров
+  const availableLanguages = useMemo(() => {
+    const sourceLangs = [...new Set(dictionaries.map(dict => dict.source_lang).filter(Boolean))].sort();
+    const targetLangs = [...new Set(dictionaries.map(dict => dict.target_lang).filter(Boolean))].sort();
+    return { sourceLangs, targetLangs };
+  }, [dictionaries]);
+
+  // Фильтруем словари
+  const filteredDictionaries = useMemo(() => {
+    return dictionaries.filter(dict => {
+      // Фильтр по названию
+      const matchesSearch = !searchTerm || 
+        dict.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (dict.description && dict.description.toLowerCase().includes(searchTerm.toLowerCase()));
+      
+      // Фильтр по исходному языку
+      const matchesSourceLang = !sourceLangFilter || dict.source_lang === sourceLangFilter;
+      
+      // Фильтр по языку перевода
+      const matchesTargetLang = !targetLangFilter || dict.target_lang === targetLangFilter;
+      
+      return matchesSearch && matchesSourceLang && matchesTargetLang;
+    });
+  }, [dictionaries, searchTerm, sourceLangFilter, targetLangFilter]);
+
   if (loading) {
     return (
       <div className="content_container">
@@ -70,13 +98,76 @@ const BuyDict = () => {
     <div className="content_container">
       <h1 className="page_title">{t("BuyDict.title") || "Магазин словарей"}</h1>
 
+      {/* Поиск и фильтры */}
+      {dictionaries.length > 0 && (
+        <div className="search_filters_container">
+          {/* Поиск по названию */}
+          <div className="search_input_wrapper">
+            <FaSearch className="search_icon" />
+            <input
+              type="text"
+              className="search_input"
+              placeholder={t("BuyDict.search_placeholder") || "Поиск по названию..."}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </div>
+
+          {/* Фильтр по языкам */}
+          <div className="filters_row">
+            <div className="filter_group">
+              <label className="filter_label">
+                {t("BuyDict.source_lang") || "Исходный язык"}
+              </label>
+              <select
+                className="filter_select"
+                value={sourceLangFilter}
+                onChange={(e) => setSourceLangFilter(e.target.value)}
+              >
+                <option value="">{t("BuyDict.all_languages") || "Все языки"}</option>
+                {availableLanguages.sourceLangs.map(lang => (
+                  <option key={lang} value={lang}>{lang}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="filter_group">
+              <label className="filter_label">
+                {t("BuyDict.target_lang") || "Язык перевода"}
+              </label>
+              <select
+                className="filter_select"
+                value={targetLangFilter}
+                onChange={(e) => setTargetLangFilter(e.target.value)}
+              >
+                <option value="">{t("BuyDict.all_languages") || "Все языки"}</option>
+                {availableLanguages.targetLangs.map(lang => (
+                  <option key={lang} value={lang}>{lang}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Показать количество результатов */}
+          {filteredDictionaries.length !== dictionaries.length && (
+            <div className="results_count">
+              {t("BuyDict.results_count") || "Найдено:"} {filteredDictionaries.length} {t("BuyDict.of") || "из"} {dictionaries.length}
+            </div>
+          )}
+        </div>
+      )}
+
       {dictionaries.length === 0 ? (
         <div className="empty_state">
           <p>{t("BuyDict.empty") || "Пока нет словарей на продажу"}</p>
         </div>
+      ) : filteredDictionaries.length === 0 ? (
+        <div className="empty_state">
+          <p>{t("BuyDict.no_results") || "Ничего не найдено"}</p>
+        </div>
       ) : (
         <div className="dictionaries_grid">
-          {dictionaries.map((dict) => (
+          {filteredDictionaries.map((dict) => (
             <div key={dict.id} className="dictionary_card">
               {(dict.cover_image || dict.cover_image_url) && (
                 <div className="card_image">
