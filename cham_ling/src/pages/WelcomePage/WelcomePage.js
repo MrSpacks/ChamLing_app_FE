@@ -13,7 +13,8 @@ const WelcomePage = () => {
 
   return (
     <PageLayout>
-      <div className="logoContainer">
+      
+      <div className="welcome_logo_container">
         <img src="logo.png" alt="Logo" className="logo" />
         <h1 className="titleWP">ChamLing</h1>
       </div>
@@ -27,7 +28,9 @@ const WelcomePage = () => {
       </div>
 
       {showLogin && <LoginModal onClose={() => setShowLogin(false)} />}
+      
     </PageLayout>
+
   );
 };
 

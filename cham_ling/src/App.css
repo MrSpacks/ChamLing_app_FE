@@ -39,8 +39,8 @@
   --bg-secondary-dark: rgb(34, 34, 34);
 
   /* Navbar colors from mobile design */
-  --bg-navbar-light: rgb(104, 104, 255);
-  --bg-navbar-dark: #1D1D3A; /* Updated to match design */
+  --bg-navbar-light: #f6f8f7;
+  --bg-navbar-dark: #07100D; /* Updated to match design */
   
   /* Input colors from mobile design */
   --bg-input-light: #f0f4f2;

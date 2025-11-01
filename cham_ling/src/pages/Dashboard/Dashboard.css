@@ -24,22 +24,22 @@
   gap: 0;
 }
 .dashboard_children {
-  margin-left: 20px; /* отступ от панели навигации */
+  /* margin-left: 20px;  */
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  background-color: var(--bg-secondary);
+  /* background-color: var(--bg-secondary); */
   width: 100%;
-  padding: 24px;
-  border-radius: 16px;
-  height: calc(100vh - 220px);
+  /* padding: 24px; */
+  /* border-radius: 16px; */
+  height: calc(100vh - 130px);
   overflow-y: auto;
   overflow-x: hidden;
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08); */
   /* Скрытие скроллбара */
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -55,6 +55,7 @@
   width: 100%;
   box-sizing: border-box;
 }
+
 
 /* ===== Мобильная нижняя навигация ===== */
 @media (max-width: 768px) {
@@ -98,15 +99,18 @@
     justify-content: space-around;
     gap: 8px;
     padding: 12px env(safe-area-inset-right) calc(12px + env(safe-area-inset-bottom)) env(safe-area-inset-left);
-    background: var(--bg-primary);
-    border-top: 1px solid var(--bg-secondary);
+    background: var(--bg-navbar); /* Use navbar color from design */
+    border-top: 1px solid var(--border); 
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    padding-bottom: 30px;
+    border-radius: 20px 20px 0 0;
   }
 
   .dark-theme .dashboard_mobile {
-    background: var(--bg-primary-dark);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--bg-navbar-dark);
+    border-top: 1px solid var(--border-dark);
+    border-radius: 20px 20px 0 0;
   }
 
   .dash_button_mobile {
@@ -128,9 +132,9 @@
 
   .mobile_icon {
     font-size: 1.5rem;
-    color: var(--text-primary);
+    color: var(--text-muted); /* Use muted text color for inactive state */
     transition: all 0.2s ease;
-    opacity: 0.6;
+    opacity: 1;
     position: relative;
     z-index: 1;
   }
@@ -163,35 +167,44 @@
     opacity: 0.15;
     z-index: 0;
   }
+
+  .button_text_mobile {
+    font-size: 0.75rem; /* text-xs from design */
+    font-weight: 500; /* font-medium from design */
+    line-height: 1;
+    margin-top: 0.25rem;
+    color: var(--text-muted); /* Use muted text color for inactive state */
+    transition: all 0.2s ease;
+  }
+
+  .dash_button_mobile.active .button_text_mobile {
+    font-weight: 700; /* font-bold from design */
+    color: var(--primary-green);
+  }
 }
 
 .menu_icon,
 .menu_button {
   border: none;
-  font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-primary);
-  background-color: var(--bg-secondary);
-  padding: 8px 12px;
+  background-color: inherit;
   border-radius: 8px;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-.menu_button:hover {
-  background-color: rgba(14, 107, 60, 0.1);
-  transform: scale(1.05);
+.menu_icon {
+ color: var(--text-primary);
+ width: 24px;
+ height: 24px;
+ margin: 0 18px;
 }
 
-.menu_button:hover .menu_icon {
+.menu_icon:hover {
   color: var(--primary-green);
 }
 
-.menu_button:active {
-  transform: scale(0.95);
-}
 
 /* Скрыть menu_icon на мобильной версии */
 @media (max-width: 768px) {
@@ -279,33 +292,36 @@
 
 .dashboard_desktop.show_buttons {
   min-width: 200px;
+  width: 100%;
 }
 .book_icon {
   font-size: 1.4rem;
   color: var(--text-primary);
   transition: all 0.3s ease;
   flex-shrink: 0;
+  margin: 0 10px;
+  width: 24px;
+  height: 24px;
 }
 
 .dash_button_desktop {
+  width: 100%;
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  gap: 12px;
+  /* gap: 12px; */
   color: var(--text-primary);
+  opacity: 0.6;
   border: none;
-  padding: 14px 16px;
-  font-size: 1rem;
+  padding: 15px 5px 15px 17px;
   background-color: transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 100%;
-  text-align: left;
-  border-radius: 10px;
-  position: relative;
-  overflow: hidden;
+  border-radius: 5px;
+  font-size: 1.2rem;
 }
 
-.dash_button_desktop::before {
+/* .dash_button_desktop::before {
   content: "";
   position: absolute;
   left: 0;
@@ -315,7 +331,7 @@
   background: transparent;
   transition: background 0.3s ease;
   border-radius: 0 4px 4px 0;
-}
+} */
 
 .dash_button_desktop:hover {
   background-color: var(--bg-secondary);
@@ -363,10 +379,10 @@
   .dashboard_mobile {
     display: none;
   }
-  
+/*   
   .dashboard_children {
     margin-left: 20px;
-  }
+  } */
   
   .dashboard_panel {
     margin-right: 20px;

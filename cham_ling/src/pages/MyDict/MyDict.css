@@ -18,7 +18,7 @@
   margin: 0;
   border-bottom: 1px solid var(--bg-secondary);
   background: var(--bg-primary);
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   z-index: 10;
 }
@@ -41,8 +41,8 @@
 }
 
 .dictionaries_grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   width: 100%;
   padding: 1rem;
@@ -75,7 +75,7 @@
 
 .card_image {
   width: 100%;
-  height: 8rem; /* 128px - matches design h-32 */
+  height: 15rem; /* 128px - matches design h-32 */
   overflow: hidden;
   background: var(--bg-primary);
   background-size: cover;
@@ -250,9 +250,9 @@
     padding: 1rem;
   }
 
-  .card_image {
-    height: 8rem; /* Keep h-32 from design */
-  }
+  /* .card_image {
+    height: 8rem; 
+  } */
 
   .card_content {
     padding: 1rem; /* Keep p-4 from design */

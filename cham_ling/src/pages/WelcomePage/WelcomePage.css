@@ -25,6 +25,7 @@ main {
   font-family: "Roboto", sans-serif;
 }
 
+
 .titleWP {
   color: var(--text-primary);
   font-size: 2rem; /* text-[32px] from design */
@@ -74,12 +75,12 @@ main {
 }
 
 /* Welcome Page Layout - Mobile Design */
-.logoContainer {
+.welcome_logo_container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem; /* space-y-8 from design */
-  margin-bottom: 2rem;
+  /* gap: 2rem;  */
+  /* margin-bottom: 2rem; */
 }
 
 .welcome_content {
@@ -129,8 +130,8 @@ main {
 }
 
 @media (min-width: 600px) {
-  .logoContainer {
-    flex-direction: row;
+  .welcome_logo_container {
+    flex-direction: column;
     align-items: center;
   }
   .titleWP {
