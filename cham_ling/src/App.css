@@ -1,51 +1,84 @@
 :root {
-  --primary-green: rgb(14, 107, 60);
+  /* Primary colors from mobile design */
+  --primary-green: #0e6c3d; /* rgb(14, 108, 61) - matches design */
   --secondary-green: rgb(109, 182, 96);
-  /* text colors */
-  --text-primary-light: black;
-  --text-primary-dark: rgba(179, 179, 179, 0.82);
+  
+  /* Background colors from mobile design */
+  --background-light: #f6f8f7; /* Light theme background */
+  --background-dark: #07100D; /* Dark theme background */
+  
+  /* Card colors from mobile design */
+  --card-light: #ffffff;
+  --card-dark: #101a16; /* Dark theme card */
+  --surface-light: #ffffff;
+  --surface-dark: #192822; /* Alternative dark surface */
+  
+  /* Text colors from mobile design */
+  --text-primary-light: #111714; /* Light theme primary text */
+  --text-primary-dark: rgba(179, 179, 179, 0.82); /* Dark theme primary text */
+  
+  --text-secondary-light: #648775; /* Light theme secondary text */
+  --text-secondary-dark: rgba(179, 179, 179, 0.82); /* Dark theme secondary text */
+  --text-muted-light: #648775;
+  --text-muted-dark: #8a9a93;
 
-  --text-secondary-light: white;
-  --text-secondary-dark: rgb(254, 254, 246);
-  /* button colors */
-  --bg-button: rgb(14, 107, 60);
+  --text-white-light: white;
+  --text-white-dark: rgb(254, 254, 246);
+  
+  /* Button colors */
+  --bg-button: #0e6c3d;
   --bg-button-hover-light: rgb(254, 254, 246);
   --bg-button-hover-dark: rgb(7, 16, 13);
-  --button-hover-text-light: rgb(14, 107, 60);
+  --button-hover-text-light: #0e6c3d;
   --button-hover-text-dark: rgb(254, 254, 246);
 
-  --bg-primary-light: rgb(254, 254, 246);
-  --bg-primary-dark: rgb(7, 16, 13);
+  --bg-primary-light: #f6f8f7; /* Updated to match design */
+  --bg-primary-dark: #07100D; /* Updated to match design */
 
   --bg-secondary-light: rgb(212, 212, 212);
   --bg-secondary-dark: rgb(34, 34, 34);
 
+  /* Navbar colors from mobile design */
   --bg-navbar-light: rgb(104, 104, 255);
-  --bg-navbar-dark: rgb(29, 29, 58);
-  --bg-input-light: rgb(255, 255, 255);
-  --bg-input-dark: rgb(20, 34, 35);
+  --bg-navbar-dark: #1D1D3A; /* Updated to match design */
+  
+  /* Input colors from mobile design */
+  --bg-input-light: #f0f4f2;
+  --bg-input-dark: #101a16; /* Updated to match design */
+  
+  /* Border colors */
+  --border-light: #dce5e0;
+  --border-dark: #2a3932;
 }
 
 .light-theme {
   --bg-input: var(--bg-input-light);
   --text-primary: var(--text-primary-light);
   --text-secondary: var(--text-secondary-light);
-  --bg-primary: var(--bg-primary-light);
+  --text-muted: var(--text-muted-light);
+  --bg-primary: var(--background-light);
   --bg-secondary: var(--bg-secondary-light);
   --bg-navbar: var(--bg-navbar-light);
   --bg-button-hover: var(--bg-button-hover-light);
   --button-hover-text: var(--button-hover-text-light);
+  --card: var(--card-light);
+  --surface: var(--surface-light);
+  --border: var(--border-light);
 }
 
 .dark-theme {
   --bg-input: var(--bg-input-dark);
   --text-primary: var(--text-primary-dark);
   --text-secondary: var(--text-secondary-dark);
-  --bg-primary: var(--bg-primary-dark);
+  --text-muted: var(--text-muted-dark);
+  --bg-primary: var(--background-dark);
   --bg-secondary: var(--bg-secondary-dark);
   --bg-navbar: var(--bg-navbar-dark);
   --bg-button-hover: var(--bg-button-hover-dark);
   --button-hover-text: var(--button-hover-text-dark);
+  --card: var(--card-dark);
+  --surface: var(--surface-dark);
+  --border: var(--border-dark);
 }
 
 /* global styles */

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChamLing - My Vocabulary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4CAF50",
+              "background-light": "#F7F9FC",
+              "background-dark": "#121212",
+              "card-light": "#FFFFFF",
+              "card-dark": "#1E1E1E",
+              "text-primary-light": "#333333",
+              "text-primary-dark": "#E0E0E0",
+              "text-secondary-light": "#6c757d",
+              "text-secondary-dark": "#9E9E9E",
+            },
+            fontFamily: {
+              "display": ["Lexend", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark group/design-root overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 flex h-16 shrink-0 items-center justify-between border-b border-gray-200/80 bg-background-light/80 px-4 backdrop-blur-sm dark:border-gray-800/80 dark:bg-background-dark/80">
+<h1 class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark">My Vocabulary</h1>
+<div class="flex items-center gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-text-primary-light hover:bg-gray-200 dark:text-text-primary-dark dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-text-primary-light hover:bg-gray-200 dark:text-text-primary-dark dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-2xl">swap_vert</span>
+</button>
+</div>
+</header>
+<!-- Main Content: Vocabulary List -->
+<main class="flex-grow overflow-y-auto px-4 pt-6 pb-28">
+<div class="flex flex-col gap-4">
+<!-- Vocabulary Card 1 -->
+<div class="flex flex-col gap-4 rounded-xl bg-card-light p-4 shadow-sm dark:bg-card-dark">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<h2 class="text-lg font-bold text-text-primary-light dark:text-text-primary-dark">Ephemeral</h2>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">Lasting for a very short time.</p>
+</div>
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-text-secondary-light hover:bg-gray-100 dark:text-text-secondary-dark dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-medium text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300">Learning</span>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 dark:bg-primary/20 dark:text-primary dark:hover:bg-primary/30">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Vocabulary Card 2 -->
+<div class="flex flex-col gap-4 rounded-xl bg-card-light p-4 shadow-sm dark:bg-card-dark">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<h2 class="text-lg font-bold text-text-primary-light dark:text-text-primary-dark">Serendipity</h2>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">The occurrence of events by chance in a happy or beneficial way.</p>
+</div>
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-text-secondary-light hover:bg-gray-100 dark:text-text-secondary-dark dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 dark:bg-blue-900/50 dark:text-blue-300">New</span>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 dark:bg-primary/20 dark:text-primary dark:hover:bg-primary/30">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Vocabulary Card 3 -->
+<div class="flex flex-col gap-4 rounded-xl bg-card-light p-4 shadow-sm dark:bg-card-dark">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<h2 class="text-lg font-bold text-text-primary-light dark:text-text-primary-dark">Mellifluous</h2>
+<p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">A sound that is sweet and smooth, pleasing to hear.</p>
+</div>
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-text-secondary-light hover:bg-gray-100 dark:text-text-secondary-dark dark:hover:bg-gray-700">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+<div class="flex items-center justify-between">
+<span class="rounded-full bg-green-100 px-3 py-1 text-xs font-medium text-green-800 dark:bg-green-900/50 dark:text-green-300">Mastered</span>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20 dark:bg-primary/20 dark:text-primary dark:hover:bg-primary/30">
+<span class="material-symbols-outlined">play_arrow</span>
+</button>
+</div>
+</div>
+<!-- Empty State Example (commented out, uncomment to view) -->
+<!-- 
+                <div class="flex flex-col items-center justify-center text-center mt-20">
+                    <span class="material-symbols-outlined text-6xl text-gray-400 dark:text-gray-600">bookmark_add</span>
+                    <h3 class="mt-4 text-lg font-semibold text-text-primary-light dark:text-text-primary-dark">Your vocabulary is empty</h3>
+                    <p class="mt-1 text-sm text-text-secondary-light dark:text-text-secondary-dark">Start by adding words from the dictionary.</p>
+                    <button class="mt-6 flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-primary px-6 text-white text-base font-bold leading-normal tracking-[0.015em]">
+                        Add your first word
+                    </button>
+                </div>
+                -->
+</div>
+</main>
+<!-- Floating Action Button -->
+<div class="fixed bottom-24 right-4 z-20">
+<button class="flex h-14 w-14 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary text-white shadow-lg">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-30 flex h-20 items-center justify-around border-t border-gray-200/80 bg-background-light/90 backdrop-blur-sm dark:border-gray-800/80 dark:bg-background-dark/90">
+<a class="flex flex-col items-center gap-1 text-text-secondary-light dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-xs">Dictionary</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">bookmarks</span>
+<span class="text-xs font-bold">Vocabulary</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-secondary-light dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-xs">Progress</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-secondary-light dark:text-text-secondary-dark" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

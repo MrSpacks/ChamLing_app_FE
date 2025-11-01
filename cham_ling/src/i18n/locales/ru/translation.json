@@ -192,12 +192,26 @@
   },
   "settings": {
     "title": "Настройки",
+    "loading": "Загрузка...",
     "language": "Язык приложения",
     "theme": "Тема оформления",
     "light_theme": "Светлая тема",
     "dark_theme": "Тёмная тема",
-    "account": "Аккаунт",
-    "logout": "Выйти"
+    "account": "Управление аккаунтом",
+    "username": "Имя пользователя",
+    "email": "Email",
+    "balance": "Баланс",
+    "logout": "Выйти из аккаунта",
+    "notifications": "Уведомления",
+    "notifications_enabled": "Включить напоминания об учёбе",
+    "notifications_permission_required": "Для включения уведомлений требуется разрешение браузера.",
+    "notifications_permission_hint": "Для работы уведомлений требуется разрешение браузера",
+    "notification_time": "Время напоминания",
+    "hour": "Час",
+    "minute": "Минута",
+    "notification_preview": "Напоминание будет приходить каждый день в",
+    "notifications_saved": "Настройки уведомлений сохранены!",
+    "notifications_save_error": "Ошибка при сохранении настроек"
   },
   "languages": {
     "en": "Английский",
@@ -252,5 +266,10 @@
     "later": "Позже",
     "dont_show_again": "Больше не предлагать",
     "manual_instructions": "Откройте меню браузера и выберите \"Установить приложение\" или \"Добавить на главный экран\""
+  },
+  "offline": {
+    "indicator": "Работа в офлайн режиме",
+    "data_from_cache": "Данные загружены из кеша",
+    "no_cached_data": "Нет сохранённых данных для офлайн режима"
   }
 }

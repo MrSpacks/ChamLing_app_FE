@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChamLing - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4CAF50",
+                        "primary-light": "#81C784",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#121212",
+                        "surface-light": "#F5F5F5",
+                        "surface-dark": "#1E1E1E",
+                        "text-light": "#212121",
+                        "text-dark": "#E0E0E0",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark">
+<!-- Top App Bar -->
+<div class="flex shrink-0 items-center justify-center p-4">
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Settings</h2>
+</div>
+<main class="flex-1 overflow-y-auto px-4 pb-28">
+<!-- Profile Section -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-4 rounded-xl">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-16 w-16" data-alt="User's profile picture, a woman with blonde hair smiling." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNTx13s6VkJjMfqgJCtAzgKCL_XYsPimIzWuMsvM6hXNdFaAcF-r78W1JUaGfJm-jN66JpXvozS0OzrfigWh5iyVML1hMoL-2csJJqyPNp0wMNNgzgapdAZ3WI9Subh3fLVb77ps73ckJUDf5m6vRW3Zdr8GeGjfdt8oPQxNF9j1g5TOAEqNKj7hKcBNBJ1AmbpTzWES42idOY5chmkKUEwJXECzxshANslvY_rLqAE_BScA4ZHXw8Vzg41PEJuH7Z57t0dre4ltDy");'></div>
+<div class="flex flex-col justify-center">
+<p class="text-base font-medium leading-normal line-clamp-1">Alex Doe</p>
+<p class="text-sm font-normal leading-normal line-clamp-2 text-text-light/70 dark:text-text-dark/70">alex.doe@email.com</p>
+</div>
+<div class="ml-auto shrink-0">
+<button class="flex size-9 items-center justify-center rounded-full bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+</div>
+</div>
+<!-- Appearance Section -->
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] pb-3 pt-6">Appearance</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light/50 dark:bg-surface-dark/50">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-10">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<p class="text-base font-normal leading-normal flex-1 truncate">Dark Mode</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full bg-background-light dark:bg-background-dark p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 2px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Language Preferences -->
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] pb-3 pt-6">Language</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light/50 dark:bg-surface-dark/50">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-14 py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-10">
+<span class="material-symbols-outlined">translate</span>
+</div>
+<p class="text-base font-normal leading-normal flex-1 truncate">Learning Language</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<span class="text-sm text-text-light/70 dark:text-text-dark/70">Cham</span>
+<span class="material-symbols-outlined text-lg">arrow_forward_ios</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-14 py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-10">
+<span class="material-symbols-outlined">record_voice_over</span>
+</div>
+<p class="text-base font-normal leading-normal flex-1 truncate">Native Language</p>
+</div>
+<div class="shrink-0 flex items-center gap-2">
+<span class="text-sm text-text-light/70 dark:text-text-dark/70">English</span>
+<span class="material-symbols-outlined text-lg">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+<!-- Notifications Section -->
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] pb-3 pt-6">Notifications</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light/50 dark:bg-surface-dark/50">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-10">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<p class="text-base font-normal leading-normal flex-1 truncate">Daily Reminders</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full bg-background-light dark:bg-background-dark p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 2px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-14 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-10">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<p class="text-base font-normal leading-normal flex-1 truncate">Progress Updates</p>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full bg-background-light dark:bg-background-dark p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white transition-transform" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 2px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Account Actions -->
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em] pb-3 pt-6">Account</h2>
+<div class="flex flex-col gap-px overflow-hidden rounded-xl bg-surface-light/50 dark:bg-surface-dark/50">
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-14 py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-10">
+<span class="material-symbols-outlined">help</span>
+</div>
+<p class="text-base font-normal leading-normal flex-1 truncate">Help &amp; Support</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-lg">arrow_forward_ios</span>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark px-4 min-h-14 py-2 justify-between">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center rounded-lg bg-background-light dark:bg-background-dark shrink-0 size-10">
+<span class="material-symbols-outlined">privacy_tip</span>
+</div>
+<p class="text-base font-normal leading-normal flex-1 truncate">Privacy Policy</p>
+</div>
+<div class="shrink-0">
+<span class="material-symbols-outlined text-lg">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+<div class="mt-4">
+<button class="w-full text-center py-3.5 rounded-xl bg-surface-light dark:bg-surface-dark text-red-500 font-medium">Log Out</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 border-t border-t-black/10 bg-background-light/80 backdrop-blur-sm dark:border-t-white/10 dark:bg-background-dark/80">
+<div class="mx-auto flex h-20 max-w-md items-center justify-around px-2">
+<a class="flex flex-col items-center gap-1 text-text-light/60 dark:text-text-dark/60" href="#">
+<span class="material-symbols-outlined">book</span>
+<span class="text-xs">Dictionary</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-light/60 dark:text-text-dark/60" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="text-xs">Vocabulary</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-light/60 dark:text-text-dark/60" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-xs">Progress</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs font-semibold">Settings</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

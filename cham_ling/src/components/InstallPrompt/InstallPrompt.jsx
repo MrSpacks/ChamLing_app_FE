@@ -33,38 +33,40 @@ const InstallPrompt = () => {
             setShow(true);
           }, 1000);
         }
-      } else {
-        // Для других браузеров или если событие еще не произошло
-        // Проверяем периодически, появилось ли событие
-        const checkInterval = setInterval(() => {
-          if (getInstallPrompt() && shouldShowInstallPrompt()) {
-            setShow(true);
-            clearInterval(checkInterval);
-          }
-        }, 2000);
-
-        // Очищаем интервал через 10 секунд
-        setTimeout(() => {
-          clearInterval(checkInterval);
-        }, 10000);
       }
     };
 
+    // Проверяем сразу при монтировании
     checkShow();
 
-    // Слушаем событие beforeinstallprompt
-    const handleBeforeInstallPrompt = () => {
-      if (shouldShowInstallPrompt()) {
+    // Слушаем кастомное событие от initInstallPrompt
+    const handleInstallPromptAvailable = () => {
+      if (shouldShowInstallPrompt() && !isPWAInstalled()) {
         setTimeout(() => {
           setShow(true);
         }, 1000);
       }
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('installpromptavailable', handleInstallPromptAvailable);
+
+    // Также проверяем периодически на случай если событие уже было до монтирования компонента
+    const checkInterval = setInterval(() => {
+      if (getInstallPrompt() && shouldShowInstallPrompt() && !isPWAInstalled()) {
+        setShow(true);
+        clearInterval(checkInterval);
+      }
+    }, 2000);
+
+    // Очищаем интервал через 10 секунд
+    const timeoutId = setTimeout(() => {
+      clearInterval(checkInterval);
+    }, 10000);
 
     return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('installpromptavailable', handleInstallPromptAvailable);
+      clearInterval(checkInterval);
+      clearTimeout(timeoutId);
     };
   }, []);
 

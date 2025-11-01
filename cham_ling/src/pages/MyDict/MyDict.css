@@ -1,16 +1,26 @@
+/* Mobile Design Styles - Dictionary Search Screen */
 .content_container {
   width: 100%;
   max-width: 100%;
-  padding: 1rem;
+  padding: 0;
   box-sizing: border-box;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding-bottom: 5rem; /* Space for bottom navigation */
 }
 
 .page_title {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 2rem;
   text-align: center;
+  padding: 1rem;
+  margin: 0;
+  border-bottom: 1px solid var(--bg-secondary);
+  background: var(--bg-primary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .loading,
@@ -26,36 +36,51 @@
 
 .empty_state {
   text-align: center;
-  padding: 3rem;
+  padding: 3rem 1.5rem;
   color: var(--text-primary);
 }
 
 .dictionaries_grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   width: 100%;
+  padding: 1rem;
 }
 
 .dictionary_card {
-  background: var(--bg-secondary);
-  border-radius: 12px;
+  background: var(--card-light);
+  border-radius: 0.75rem; /* xl rounded corners from design */
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark-theme .dictionary_card {
+  background: var(--card-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dictionary_card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .dictionary_card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .card_image {
   width: 100%;
-  height: 180px;
+  height: 8rem; /* 128px - matches design h-32 */
   overflow: hidden;
   background: var(--bg-primary);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .card_image img {
@@ -65,21 +90,27 @@
 }
 
 .card_content {
-  padding: 1.5rem;
+  padding: 1rem; /* p-4 from design */
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* gap-2 from design */
+  flex: 1;
 }
 
 .card_title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.125rem; /* text-lg from design */
+  font-weight: 700; /* font-bold from design */
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.015em; /* tracking-[-0.015em] from design */
 }
 
 .card_description {
-  color: var(--text-primary);
-  opacity: 0.8;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-size: 1rem; /* text-base from design */
+  margin: 0;
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -89,23 +120,27 @@
 .card_info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
+  align-items: flex-end;
+  gap: 0.75rem; /* gap-3 from design */
+  margin-top: auto;
 }
 
 .lang_info {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  opacity: 0.7;
+  font-size: 1rem; /* text-base from design */
+  color: var(--text-secondary);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .price_badge {
   background: var(--primary-green);
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 0.9rem;
+  padding: 0.5rem 1rem; /* h-10 px-4 from design */
+  border-radius: 0.5rem; /* rounded-lg from design */
+  font-weight: 500; /* font-medium from design */
+  font-size: 0.875rem; /* text-sm from design */
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 .sale_badge {
@@ -133,20 +168,21 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--bg-secondary, #e0e0e0);
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bg-secondary);
 }
 
 .word_count {
-  font-size: 0.85rem;
-  color: var(--text-secondary, #666);
+  font-size: 0.875rem; /* text-sm from design */
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
-/* Прогресс изучения */
+/* Прогресс изучения - Mobile Design Style */
 .card_progress {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--bg-secondary);
 }
 
 .progress_header {
@@ -164,60 +200,62 @@
 }
 
 .progress_icon {
-  color: var(--primary-green, #4caf50);
+  color: var(--primary-green);
   font-size: 1rem;
 }
 
 .progress_text {
-  font-size: 0.85rem;
-  color: var(--text-primary, #333);
-  font-weight: 500;
+  font-size: 0.875rem; /* text-sm from design */
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .progress_percentage {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--primary-green, #4caf50);
+  font-size: 0.875rem; /* text-sm from design */
+  font-weight: 700; /* font-bold from design */
+  color: var(--primary-green);
+  line-height: 1.5;
 }
 
 .progress_bar_container {
   width: 100%;
-  height: 6px;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+  height: 0.5rem; /* h-2 from design */
+  background: var(--bg-secondary);
+  border-radius: 9999px; /* rounded-full from design */
   overflow: hidden;
   position: relative;
 }
 
-.progress_bar_fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary-green, #4caf50) 0%, #45a049 100%);
-  border-radius: 10px;
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+.dark-theme .progress_bar_container {
+  background: rgba(255, 255, 255, 0.1);
 }
 
+.progress_bar_fill {
+  height: 100%;
+  background: var(--primary-green);
+  border-radius: 9999px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mobile-first responsive adjustments */
 @media (max-width: 768px) {
-  .content_container {
-    padding: 0.5rem;
+  .dictionaries_grid {
+    gap: 1rem;
+    padding: 1rem;
   }
 
   .page_title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .dictionaries_grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    font-size: 1.125rem; /* text-lg from design */
+    padding: 1rem;
   }
 
   .card_image {
-    height: 150px;
+    height: 8rem; /* Keep h-32 from design */
   }
 
   .card_content {
-    padding: 1rem;
+    padding: 1rem; /* Keep p-4 from design */
   }
 }
 

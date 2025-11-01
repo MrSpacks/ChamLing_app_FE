@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { 
   FaArrowLeft, 
   FaBolt, 
-  FaCoins, 
   FaLanguage,
   FaCheck,
   FaTimes,
@@ -11,6 +10,8 @@ import {
 } from "react-icons/fa";
 import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher";
 import { speakWord } from "../../utils/textToSpeech";
+import { saveProgress } from "../../utils/syncProgress";
+import { saveLearningProgress } from "../../api/auth";
 import "./LearnWords.css";
 
 const LearnWords = ({ dictionary, words, onBack }) => {
@@ -79,7 +80,7 @@ const LearnWords = ({ dictionary, words, onBack }) => {
   const progress = ((currentIndex + 1) / shuffledWords.length) * 100;
   const isLast = currentIndex === shuffledWords.length - 1;
 
-  const handleAnswerSelect = (answerId) => {
+  const handleAnswerSelect = async (answerId) => {
     if (showResult) return; // Не позволяем выбирать после ответа
     
     const answer = answerOptions.find(a => a.id === answerId);
@@ -93,7 +94,7 @@ const LearnWords = ({ dictionary, words, onBack }) => {
       setShowMascot(true);
       setTimeout(() => setShowMascot(false), 2000);
       
-      // Сохраняем прогресс изучения в localStorage
+      // Сохраняем прогресс изучения (localStorage + IndexedDB + сервер)
       if (dictionary && dictionary.id && currentWord && currentWord.id) {
         const progressKey = `dict_${dictionary.id}_progress`;
         const learnedWords = JSON.parse(localStorage.getItem(progressKey) || '[]');
@@ -101,7 +102,17 @@ const LearnWords = ({ dictionary, words, onBack }) => {
         // Добавляем ID слова, если его еще нет в списке изученных
         if (!learnedWords.includes(currentWord.id)) {
           learnedWords.push(currentWord.id);
-          localStorage.setItem(progressKey, JSON.stringify(learnedWords));
+          
+          // Сохраняем во все хранилища (localStorage, IndexedDB, сервер)
+          try {
+            await saveProgress(
+              dictionary.id,
+              learnedWords,
+              async (dictId, words) => await saveLearningProgress(dictId, words)
+            );
+          } catch (error) {
+            console.error('Error saving progress:', error);
+          }
         }
       }
     } else {

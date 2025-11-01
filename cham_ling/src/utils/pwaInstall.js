@@ -70,42 +70,71 @@ export const clearInstallPrompt = () => {
 };
 
 // Инициализация отслеживания установки
+let isInitialized = false;
+
 export const initInstallPrompt = () => {
-  window.addEventListener('beforeinstallprompt', (e) => {
+  // Предотвращаем дублирование слушателей
+  if (isInitialized) {
+    return;
+  }
+  
+  isInitialized = true;
+  
+  const handleBeforeInstallPrompt = (e) => {
     // Предотвращаем автоматическое отображение подсказки браузера
     e.preventDefault();
     // Сохраняем событие для использования позже
     setInstallPrompt(e);
-  });
+    console.log('beforeinstallprompt event captured');
+    
+    // Отправляем кастомное событие для компонента InstallPrompt
+    window.dispatchEvent(new CustomEvent('installpromptavailable'));
+  };
 
-  // Отслеживаем установку приложения
-  window.addEventListener('appinstalled', () => {
+  const handleAppInstalled = () => {
     clearInstallPrompt();
     console.log('PWA было установлено');
-  });
+  };
+
+  window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  window.addEventListener('appinstalled', handleAppInstalled);
+  
+  // Возвращаем функцию очистки
+  return () => {
+    window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.removeEventListener('appinstalled', handleAppInstalled);
+    isInitialized = false;
+  };
 };
 
 // Запуск установки
 export const promptInstall = async () => {
   if (deferredPrompt) {
-    // Показываем предложение установки
-    deferredPrompt.prompt();
-    
-    // Ждем, пока пользователь ответит на предложение
-    const { outcome } = await deferredPrompt.userChoice;
-    
-    if (outcome === 'accepted') {
-      console.log('Пользователь принял предложение установки');
-    } else {
-      console.log('Пользователь отклонил предложение установки');
+    try {
+      // Показываем предложение установки
+      await deferredPrompt.prompt();
+      
+      // Ждем, пока пользователь ответит на предложение
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        console.log('Пользователь принял предложение установки');
+      } else {
+        console.log('Пользователь отклонил предложение установки');
+      }
+      
+      // Очищаем сохраненное событие
+      clearInstallPrompt();
+      
+      return outcome === 'accepted';
+    } catch (error) {
+      console.error('Ошибка при показе промпта установки:', error);
+      clearInstallPrompt();
+      return false;
     }
-    
-    // Очищаем сохраненное событие
-    clearInstallPrompt();
-    
-    return outcome === 'accepted';
   }
   
+  console.warn('deferredPrompt is not available');
   return false;
 };
 

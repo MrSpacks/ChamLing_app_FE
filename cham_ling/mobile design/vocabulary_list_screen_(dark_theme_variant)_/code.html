@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChamLing - My Vocabulary</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#0e6c3d",
+            "background-light": "#f6f8f7",
+            "background-dark": "#07100D",
+            "card-dark": "#101c17",
+            "navbar-dark": "#1D1D3A",
+            "text-muted-dark": "rgba(179, 179, 179, 0.82)"
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-10 bg-background-light dark:bg-background-dark px-4 pt-4 pb-2">
+<div class="flex items-center justify-between">
+<h1 class="text-xl font-bold text-gray-900 dark:text-white">My Vocabulary</h1>
+<div class="flex items-center gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-600 dark:text-text-muted-dark hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-2xl">search</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full text-gray-600 dark:text-text-muted-dark hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-2xl">filter_list</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content - Vocabulary List -->
+<main class="flex-1 space-y-3 p-4 pb-24">
+<!-- Vocabulary Card 1 -->
+<div class="rounded-xl bg-gray-100 dark:bg-card-dark p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-1 flex-col">
+<p class="text-lg font-bold text-gray-900 dark:text-white">Ephemeral</p>
+<p class="mt-1 text-sm text-gray-600 dark:text-text-muted-dark">Lasting for a very short time.</p>
+</div>
+<button class="min-w-[80px] cursor-pointer rounded-full bg-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/30">Review</button>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<div class="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-700">
+<div class="h-full rounded-full bg-primary" style="width: 75%;"></div>
+</div>
+<p class="text-xs font-medium text-gray-500 dark:text-text-muted-dark">75%</p>
+</div>
+</div>
+<!-- Vocabulary Card 2 -->
+<div class="rounded-xl bg-gray-100 dark:bg-card-dark p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-1 flex-col">
+<p class="text-lg font-bold text-gray-900 dark:text-white">Serendipity</p>
+<p class="mt-1 text-sm text-gray-600 dark:text-text-muted-dark">The occurrence of events by chance in a happy or beneficial way.</p>
+</div>
+<button class="min-w-[80px] cursor-pointer rounded-full bg-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/30">Review</button>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<div class="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-700">
+<div class="h-full rounded-full bg-primary" style="width: 50%;"></div>
+</div>
+<p class="text-xs font-medium text-gray-500 dark:text-text-muted-dark">50%</p>
+</div>
+</div>
+<!-- Vocabulary Card 3 -->
+<div class="rounded-xl bg-gray-100 dark:bg-card-dark p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-1 flex-col">
+<p class="text-lg font-bold text-gray-900 dark:text-white">Mellifluous</p>
+<p class="mt-1 text-sm text-gray-600 dark:text-text-muted-dark">Pleasingly smooth and musical to hear.</p>
+</div>
+<button class="min-w-[80px] cursor-pointer rounded-full bg-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/30">Review</button>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<div class="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-700">
+<div class="h-full rounded-full bg-primary" style="width: 25%;"></div>
+</div>
+<p class="text-xs font-medium text-gray-500 dark:text-text-muted-dark">25%</p>
+</div>
+</div>
+<!-- Vocabulary Card 4 -->
+<div class="rounded-xl bg-gray-100 dark:bg-card-dark p-4">
+<div class="flex items-start justify-between gap-4">
+<div class="flex flex-1 flex-col">
+<p class="text-lg font-bold text-gray-900 dark:text-white">Ubiquitous</p>
+<p class="mt-1 text-sm text-gray-600 dark:text-text-muted-dark">Present, appearing, or found everywhere.</p>
+</div>
+<button class="min-w-[80px] cursor-pointer rounded-full bg-primary/20 px-4 py-2 text-sm font-medium text-primary hover:bg-primary/30">Review</button>
+</div>
+<div class="mt-3 flex items-center gap-2">
+<div class="h-1.5 flex-1 overflow-hidden rounded-full bg-gray-300 dark:bg-gray-700">
+<div class="h-full rounded-full bg-primary" style="width: 90%;"></div>
+</div>
+<p class="text-xs font-medium text-gray-500 dark:text-text-muted-dark">90%</p>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 z-10 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-lg hover:bg-primary/90">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-10 border-t border-gray-200/10 bg-gray-100 dark:bg-navbar-dark px-4 py-2">
+<div class="mx-auto flex max-w-md items-center justify-around">
+<a class="flex flex-col items-center gap-1 text-gray-500 dark:text-text-muted-dark hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500 dark:text-text-muted-dark hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-xs font-medium">Dictionary</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-xs font-bold">Vocabulary</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-gray-500 dark:text-text-muted-dark hover:text-primary dark:hover:text-primary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>

@@ -1,113 +1,337 @@
+/* Mobile Design Styles - Settings Screen */
 .content_container {
   width: 100%;
   max-width: 100%;
-  padding: 1rem;
+  padding: 0;
   box-sizing: border-box;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding-bottom: 5rem; /* Space for bottom navigation */
 }
 
 .page_title {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 1.125rem; /* text-lg from design */
+  font-weight: 700; /* font-bold from design */
   color: var(--text-primary);
-  margin-bottom: 2rem;
   text-align: center;
+  padding: 1rem;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.015em; /* tracking-[-0.015em] from design */
 }
 
 .settings_sections {
-  max-width: 600px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0;
+  padding: 1rem;
 }
 
 .settings_section {
-  background: var(--bg-secondary);
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--surface-light);
+  padding: 0;
+  border-radius: 0.75rem; /* xl from design */
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--bg-secondary);
+}
+
+.dark-theme .settings_section {
+  background: var(--surface-dark);
+  border-color: var(--border-dark);
 }
 
 .section_title {
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-size: 1.25rem; /* text-xl from design */
+  font-weight: 700; /* font-bold from design */
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin: 0;
+  padding: 1.5rem 1rem 0.75rem 1rem; /* pt-6 pb-3 px-4 from design */
+  line-height: 1.25;
+  letter-spacing: -0.015em; /* tracking-[-0.015em] from design */
 }
 
 .settings_options {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1px; /* gap-px from design */
+  overflow: hidden;
+  border-radius: 0.75rem; /* xl from design */
+  background: var(--surface-light);
+  opacity: 0.5;
+}
+
+.dark-theme .settings_options {
+  background: var(--surface-dark);
+  opacity: 0.5;
 }
 
 .option_button {
-  background: var(--bg-primary);
+  background: var(--surface-light);
   color: var(--text-primary);
-  border: 2px solid var(--bg-secondary);
-  padding: 0.875rem 1.25rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 500;
+  border: none;
+  padding: 0.875rem 1rem; /* min-h-14 px-4 from design */
+  border-radius: 0;
+  font-size: 1rem; /* text-base from design */
+  font-weight: 400; /* font-normal from design */
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+  min-height: 3.5rem; /* min-h-14 from design */
+}
+
+.dark-theme .option_button {
+  background: var(--surface-dark);
+  color: var(--text-primary);
 }
 
 .option_button:hover {
   background: var(--bg-secondary);
-  border-color: var(--primary-green);
 }
 
 .option_button.active {
   background: var(--primary-green);
   color: white;
-  border-color: var(--primary-green);
 }
 
 .logout_button {
-  background: #e74c3c;
-  color: white;
+  background: var(--surface-light);
+  color: #e74c3c; /* text-red-500 from design */
   border: none;
-  padding: 0.875rem 1.25rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 0.875rem 1.25rem; /* py-3.5 from design */
+  border-radius: 0.75rem; /* rounded-xl from design */
+  font-size: 1rem; /* text-base from design */
+  font-weight: 500; /* font-medium from design */
   cursor: pointer;
   transition: all 0.2s ease;
   width: 100%;
+  margin-top: 1rem;
+}
+
+.dark-theme .logout_button {
+  background: var(--surface-dark);
 }
 
 .logout_button:hover {
-  background: #c0392b;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+  opacity: 0.9;
 }
 
 .logout_button:active {
-  transform: translateY(0);
+  transform: scale(0.98);
 }
 
+/* Секция аккаунта - Mobile Design Style */
+.account_info {
+  background: var(--surface-light);
+  padding: 1rem;
+  border-radius: 0.75rem; /* xl from design */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dark-theme .account_info {
+  background: var(--surface-dark);
+}
+
+.account_field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  gap: 0.5rem;
+}
+
+.account_label {
+  color: var(--text-primary);
+  font-weight: 400;
+  font-size: 0.875rem; /* text-sm from design */
+  opacity: 0.7;
+}
+
+.account_value {
+  color: var(--text-primary);
+  font-weight: 500; /* font-medium from design */
+  font-size: 1rem; /* text-base from design */
+}
+
+.section_icon {
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Уведомления */
+.notification_toggle_container {
+  margin-bottom: 1rem;
+}
+
+.toggle_label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Toggle Switch - Mobile Design Style */
+.notification_toggle {
+  width: 51px; /* w-[51px] from design */
+  height: 31px; /* h-[31px] from design */
+  cursor: pointer;
+  appearance: none;
+  background: var(--bg-primary);
+  border-radius: 9999px; /* rounded-full from design */
+  position: relative;
+  padding: 0.125rem; /* p-0.5 from design */
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.dark-theme .notification_toggle {
+  background: var(--bg-primary-dark);
+}
+
+.notification_toggle:checked {
+  background: var(--primary-green);
+  justify-content: flex-end; /* has-[:checked]:justify-end from design */
+}
+
+.notification_toggle::before {
+  content: '';
+  position: absolute;
+  width: 27px; /* w-[27px] from design */
+  height: 27px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.05) 0px 2px 1px; /* box-shadow from design */
+}
+
+.notification_toggle:checked::before {
+  transform: translateX(20px);
+}
+
+.toggle_text {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
+.permission_hint {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.time_selector_container {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--bg-secondary);
+}
+
+.time_selector_label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.time_icon {
+  color: var(--primary-green);
+}
+
+.time_selectors {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.time_selector {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.time_selector label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.time_input {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--bg-secondary);
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.time_input:hover {
+  border-color: var(--primary-green);
+}
+
+.time_input:focus {
+  outline: none;
+  border-color: var(--primary-green);
+}
+
+.time_input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.time_separator {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.time_preview {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.loading_container {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+/* Mobile-first responsive adjustments */
 @media (max-width: 768px) {
-  .content_container {
-    padding: 0.5rem;
+  .settings_sections {
+    padding: 1rem;
   }
 
   .page_title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .settings_sections {
-    gap: 1.5rem;
-  }
-
-  .settings_section {
+    font-size: 1.125rem; /* Keep text-lg from design */
     padding: 1rem;
   }
 
   .section_title {
-    font-size: 1.1rem;
+    font-size: 1.25rem; /* Keep text-xl from design */
+    padding: 1.5rem 1rem 0.75rem 1rem;
   }
 }
 

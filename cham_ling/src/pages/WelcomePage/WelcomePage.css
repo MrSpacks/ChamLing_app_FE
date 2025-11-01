@@ -1,56 +1,143 @@
+/* Mobile Design Styles - Welcome Screen */
 .headerWP {
   display: flex;
   align-items: center;
-  justify-content: right;
-  gap: 20px;
-  padding: 20px;
+  justify-content: flex-end;
+  gap: 1.25rem; /* gap-5 from design */
+  padding: 1.5rem; /* p-6 from design */
 }
+
 .logo {
-  width: 200px;
+  width: 12.5rem; /* w-32 from design - 200px */
   height: auto;
 }
+
 main {
   width: 100%;
-  max-width: 1200px;
-  margin: auto;
+  max-width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0;
+  min-height: calc(100vh - 160px);
+  padding: 1.5rem; /* p-6 from design */
+  font-family: "Roboto", sans-serif;
+}
+
+.titleWP {
+  color: var(--text-primary);
+  font-size: 2rem; /* text-[32px] from design */
+  font-weight: 700; /* font-bold from design */
+  margin: 2rem 0; /* space-y-8 from design */
+  font-family: "Roboto", sans-serif;
+  line-height: 1.25;
+  letter-spacing: -0.015em; /* tracking-light from design */
+  text-align: center;
+}
+
+.button_group {
+  display: flex;
+  gap: 1.25rem; /* gap-5 from design */
+  justify-content: center;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.ThemeButton svg {
+  color: var(--text-primary);
+  width: 1.875rem; /* w-30 from design */
+  height: 1.875rem;
+}
+
+/* Welcome screen icon container */
+.welcome_icon_container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome_icon_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8rem; /* h-32 w-32 from design */
+  height: 8rem;
+  border-radius: 50%;
+  background: rgba(0, 184, 148, 0.2); /* bg-primary/20 from design */
+}
+
+.welcome_icon {
+  font-size: 4.5rem; /* text-7xl from design */
+  color: var(--primary-green);
+}
+
+/* Welcome Page Layout - Mobile Design */
+.logoContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: calc(100vh - 160px);
-  font-family: "Roboto", sans-serif;
+  gap: 2rem; /* space-y-8 from design */
+  margin-bottom: 2rem;
 }
-.titleWP {
-  color: var(--primary-green);
-  font-size: 3rem;
-  font-weight: bold;
-  margin: 20px 0;
-  font-family: "Roboto", sans-serif;
-}
-.button_group {
+
+.welcome_content {
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem; /* space-y-8 from design */
+  flex: 1;
   justify-content: center;
-  margin-top: 30px;
+  text-align: center;
 }
-.ThemeButton svg {
+
+.welcome_subtitle {
   color: var(--text-primary);
-  width: 30px;
-  height: 30px;
+  opacity: 0.8;
+  font-size: 1rem; /* text-base from design */
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 20rem; /* max-w-xs from design */
+}
+
+.get_started_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 0.75rem; /* rounded-xl from design */
+  height: 3.5rem; /* h-14 from design */
+  padding: 0 1.25rem; /* px-5 from design */
+  flex: 1;
+  min-width: 5.25rem; /* min-w-[84px] from design */
+  max-width: 30rem; /* max-w-[480px] from design */
+  background: var(--primary-green);
+  color: white;
+  font-size: 1.125rem; /* text-lg from design */
+  font-weight: 700; /* font-bold from design */
+  line-height: 1.5;
+  letter-spacing: 0.015em; /* tracking-[0.015em] from design */
+  box-shadow: 0 10px 15px -3px rgba(0, 184, 148, 0.3), 0 4px 6px -2px rgba(0, 184, 148, 0.3); /* shadow-lg shadow-primary/30 from design */
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.get_started_button:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 184, 148, 0.5), 0 4px 6px -2px rgba(0, 184, 148, 0.5); /* shadow-primary/50 from design */
 }
 
 @media (min-width: 600px) {
   .logoContainer {
-    display: flex;
     flex-direction: row;
     align-items: center;
   }
   .titleWP {
-    font-size: 3rem;
-    margin: 10px 0;
+    font-size: 2rem; /* Keep text-[32px] from design */
+    margin: 2rem 0;
   }
   .logo {
-    width: 150px;
+    width: 8rem; /* Keep w-32 from design */
   }
 }

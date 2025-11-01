@@ -1,3 +1,14 @@
+/**
+ * Главный компонент приложения ChamLing.
+ * 
+ * Определяет маршрутизацию приложения и управляет глобальными настройками:
+ * - Инициализация i18n (интернационализация)
+ * - Инициализация темы (светлая/тёмная)
+ * - Инициализация PWA install prompt
+ * - Маршрутизация между страницами
+ * 
+ * @module App
+ */
 import React, { useContext, useEffect } from "react";
 import "./i18n";
 import "./App.css";
@@ -15,23 +26,51 @@ import MyDict from "./pages/MyDict/MyDict";
 import DictionaryDetail from "./pages/DictionaryDetail/DictionaryDetail";
 import ProtectedRoute from "./components/ProtectedRoute";
 import InstallPrompt from "./components/InstallPrompt/InstallPrompt";
+import OfflineIndicator from "./components/OfflineIndicator/OfflineIndicator";
 import { initInstallPrompt } from "./utils/pwaInstall";
+import { initAutoSync } from "./utils/syncProgress";
+import { saveLearningProgress } from "./api/auth";
 
+/**
+ * Главный компонент приложения.
+ * 
+ * Управляет маршрутизацией и инициализацией глобальных функций.
+ * Все защищённые маршруты обёрнуты в ProtectedRoute для проверки авторизации.
+ * 
+ * @returns {JSX.Element} Корневой элемент приложения
+ */
 function App() {
   const { theme } = useContext(ThemeContext);
 
+  // Инициализация PWA install prompt при монтировании компонента
   useEffect(() => {
-    // Инициализируем отслеживание установки PWA
     initInstallPrompt();
+  }, []);
+
+  // Инициализация автоматической синхронизации прогресса
+  useEffect(() => {
+    const unsubscribe = initAutoSync(saveLearningProgress);
+    
+    // Выполняем начальную синхронизацию если онлайн
+    if (navigator.onLine) {
+      import("./utils/syncProgress").then(({ syncQueue }) => {
+        syncQueue(saveLearningProgress);
+      });
+    }
+    
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
   }, []);
 
   return (
     <div className={`App ${theme}`}>
       <Routes>
+        {/* Публичные маршруты (доступны без авторизации) */}
         <Route path="/" element={<WelcomePage />} />
         <Route path="/register" element={<RegisterPage />} />
 
-        {/* Защищённые маршруты */}
+        {/* Защищённые маршруты - требуют авторизации через ProtectedRoute */}
         <Route
           path="/dashboard"
           element={
@@ -41,6 +80,7 @@ function App() {
           }
         >
           {/* Вложенные страницы внутри Dashboard */}
+          {/* Редирект на /dashboard/my-dict по умолчанию */}
           <Route index element={<Navigate to="my-dict" replace />} />
           <Route path="settings" element={<Settings />} />
           <Route path="add-dict" element={<AddDict />} />
@@ -48,7 +88,7 @@ function App() {
           <Route path="my-dict" element={<MyDict />} />
         </Route>
         
-        {/* Детальная страница словаря вне Dashboard */}
+        {/* Детальная страница словаря (отдельный маршрут вне Dashboard) */}
         <Route
           path="/dashboard/dictionary/:id"
           element={
@@ -59,8 +99,11 @@ function App() {
         />
       </Routes>
       
-      {/* Компонент предложения установки PWA */}
+      {/* Компонент предложения установки PWA (показывается при наличии возможности) */}
       <InstallPrompt />
+      
+      {/* Индикатор офлайн статуса */}
+      <OfflineIndicator />
     </div>
   );
 }

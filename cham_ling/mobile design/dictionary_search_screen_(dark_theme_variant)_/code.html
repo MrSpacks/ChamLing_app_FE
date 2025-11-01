@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ChamLing - Language Learning</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0e6b3c",
+                        "background-light": "#f6f8f7",
+                        "background-dark": "#112119",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-[#07100D]">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-[#07100D] dark group/design-root overflow-x-hidden pb-24">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1">ChamLing</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-white gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined text-white" style="font-size: 28px;">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-3">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[rgba(179,179,179,0.82)] flex border-none bg-[#101a16] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[rgba(179,179,179,0.82)] focus:outline-0 focus:ring-2 focus:ring-primary border-none bg-[#101a16] h-full placeholder:text-[rgba(179,179,179,0.6)] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search for a word..." value=""/>
+</div>
+</label>
+</div>
+<!-- Section Header -->
+<h3 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">Featured Words</h3>
+<!-- Card 1 -->
+<div class="p-4">
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-[#101a16] p-4">
+<div class="flex flex-[2_2_0px] flex-col gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-white text-base font-bold leading-tight">こんにちは</p>
+<p class="text-[rgba(179,179,179,0.82)] text-sm font-normal leading-normal">A common Japanese greeting, equivalent to 'Hello' or 'Good afternoon'.</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-primary text-white pr-2 gap-1 text-sm font-medium leading-normal w-fit">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+<span class="truncate">Add</span>
+</button>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="Abstract image of cherry blossoms" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBa039BPBUyobbVVxVwerTCEfDkeVNtgB-VTjPZvNKhUaDp-IlLKecIMikB1iuINX7OevQFe91MfFpaeC29Y6LcFKxv_vwTRijq2d0sMICkqD73I_vbGhMqP_AcCIJqBIG1ytlggCyvJha7qIZtMfhCHXevPg7fcM7YsCu6h7mirxW5J1Oj6ef-nviTxChXCasrL1N28TVoHOqNZYO2tkKiOL7alaSDa-bw61XD7JVuDHdk6p_r6WU806L_O2S_JhHkV-s4YMZ7qfuh");'></div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-4 pt-0">
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-[#101a16] p-4">
+<div class="flex flex-[2_2_0px] flex-col gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-white text-base font-bold leading-tight">ありがとう</p>
+<p class="text-[rgba(179,179,179,0.82)] text-sm font-normal leading-normal">A Japanese expression of gratitude, meaning 'Thank you'.</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-primary text-white pr-2 gap-1 text-sm font-medium leading-normal w-fit">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+<span class="truncate">Add</span>
+</button>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="Abstract image of a Japanese temple gate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCJlhz_EggdpPk9h6CoZyk9zu1z0mvOwFB84wy7aY2DD3il_xnCp27WUtZfFEygLHOZh7761ulFvgYIFxhAbDLA-X-BnDyC3TUB5upEnP5HnBJeJ9F0gAW_RAczHjB26bvx3oHy_A27VzBWcKZC8fI1kKh4baE8Qz2IiECdJU1HTh76fzy7dfDOjWp66na44GNNgifX38xRUfiAnA28aqMijqahxgY6ZEhIun_kaE1Qr6YIS05x4n3k8WeUj2F0ZpzeM8aVX0Awl8kj");'></div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-4 pt-0">
+<div class="flex items-stretch justify-between gap-4 rounded-xl bg-[#101a16] p-4">
+<div class="flex flex-[2_2_0px] flex-col gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-white text-base font-bold leading-tight">素晴らしい</p>
+<p class="text-[rgba(179,179,179,0.82)] text-sm font-normal leading-normal">Means 'wonderful' or 'magnificent', used to express admiration.</p>
+</div>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-8 px-4 flex-row-reverse bg-primary text-white pr-2 gap-1 text-sm font-medium leading-normal w-fit">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+<span class="truncate">Add</span>
+</button>
+</div>
+<div class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-lg flex-1" data-alt="Abstract image of Mount Fuji" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAIjt2SauPku3llbkQtBY7GHoNsngxdZmJGpvWOlcbkHBA1K7_NPPhR-U_4Y9kqtG3-d-Dhy35JO0mOiTBdCB-05CLTQQUZ9B8s-geb_mhNkyIdIQTAUMVBMZ6TExO-uQpXdv4kZWLXRo9yrBNVxcU5b7TQXfGSI8jZfG5ejYUoBfLlsLcntK7wZnEGJqCAmZWvGJ0qwDBadSd0kBrr9Kqa8_1XDrph9EPKkNwPJ8ZHthtO-pAilX6UMjM3YjsccyyzkVvlvooq_zln");'></div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 h-20 bg-[#1D1D3A] px-4">
+<div class="flex justify-around items-center h-full">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-xs">Search</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[rgba(179,179,179,0.82)]" href="#">
+<span class="material-symbols-outlined">style</span>
+<span class="text-xs">Decks</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[rgba(179,179,179,0.82)]" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs">Profile</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[rgba(179,179,179,0.82)]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-xs">Settings</span>
+</a>
+</div>
+</div>
+</div>
+</body></html>

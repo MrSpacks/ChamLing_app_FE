@@ -114,24 +114,28 @@ const Dashboard = () => {
               onClick={() => navigate("/dashboard/my-dict")}
             >
               <FaBook className="mobile_icon" />
+              <span className="button_text_mobile">{t("dashboard.button_my-dict") || "Dictionary"}</span>
             </button>
             <button
               className={`dash_button_mobile ${isActive("/dashboard/add-dict") ? "active" : ""}`}
               onClick={() => navigate("/dashboard/add-dict")}
             >
               <FaBookMedical className="mobile_icon" />
+              <span className="button_text_mobile">{t("dashboard.button_create-dict") || "Vocabulary"}</span>
             </button>
             <button
               className={`dash_button_mobile ${isActive("/dashboard/buy-dict") ? "active" : ""}`}
               onClick={() => navigate("/dashboard/buy-dict")}
             >
               <FaShoppingCart className="mobile_icon" />
+              <span className="button_text_mobile">{t("dashboard.button_buy_dict") || "Progress"}</span>
             </button>
             <button
               className={`dash_button_mobile ${isActive("/dashboard/settings") ? "active" : ""}`}
               onClick={() => navigate("/dashboard/settings")}
             >
               <FaCog className="mobile_icon" />
+              <span className="button_text_mobile">{t("dashboard.button_settings") || "Settings"}</span>
             </button>
           </div>
 

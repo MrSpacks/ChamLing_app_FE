@@ -192,12 +192,26 @@
   },
   "settings": {
     "title": "Settings",
+    "loading": "Loading...",
     "language": "App Language",
     "theme": "Theme",
     "light_theme": "Light Theme",
     "dark_theme": "Dark Theme",
-    "account": "Account",
-    "logout": "Logout"
+    "account": "Account Management",
+    "username": "Username",
+    "email": "Email",
+    "balance": "Balance",
+    "logout": "Logout",
+    "notifications": "Notifications",
+    "notifications_enabled": "Enable study reminders",
+    "notifications_permission_required": "Browser permission is required to enable notifications.",
+    "notifications_permission_hint": "Browser permission is required for notifications to work",
+    "notification_time": "Reminder time",
+    "hour": "Hour",
+    "minute": "Minute",
+    "notification_preview": "Reminder will be sent every day at",
+    "notifications_saved": "Notification settings saved!",
+    "notifications_save_error": "Error saving settings"
   },
   "languages": {
     "en": "English",
@@ -252,5 +266,10 @@
     "later": "Later",
     "dont_show_again": "Don't show again",
     "manual_instructions": "Open your browser menu and select \"Install app\" or \"Add to Home Screen\""
+  },
+  "offline": {
+    "indicator": "Working offline",
+    "data_from_cache": "Data loaded from cache",
+    "no_cached_data": "No cached data available for offline mode"
   }
 }

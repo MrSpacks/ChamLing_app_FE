@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { getUserDictionaries } from "../../api/auth";
+import { getUserDictionaries, getLearningProgress } from "../../api/auth";
+import { getProgress } from "../../utils/syncProgress";
 import { FaGraduationCap } from "react-icons/fa";
 import "./MyDict.css";
 
@@ -19,9 +20,22 @@ const MyDict = () => {
   const loadDictionaries = async () => {
     try {
       setLoading(true);
+      setError(null);
+      
+      console.log('Loading dictionaries...');
       const data = await getUserDictionaries();
-      // Добавляем прогресс изучения для каждого словаря
-      const dictionariesWithProgress = data.map(dict => {
+      console.log('Dictionaries loaded:', data?.length || 0);
+      
+      if (!data || !Array.isArray(data)) {
+        console.error('Invalid data received:', data);
+        setError("Ошибка: получены некорректные данные");
+        setDictionaries([]);
+        return;
+      }
+      
+      // Сначала устанавливаем словари без прогресса для быстрой отрисовки
+      const dictionariesWithoutProgress = data.map(dict => {
+        // Получаем прогресс из localStorage сразу (быстро, синхронно)
         const progressKey = `dict_${dict.id}_progress`;
         const learnedWords = JSON.parse(localStorage.getItem(progressKey) || '[]');
         const progress = dict.word_count > 0 
@@ -31,18 +45,105 @@ const MyDict = () => {
         return {
           ...dict,
           learnedWordsCount: learnedWords.length,
-          progress: Math.min(progress, 100) // Ограничиваем до 100%
+          progress: Math.min(progress, 100)
         };
       });
       
-      setDictionaries(dictionariesWithProgress);
-      setError(null);
+      setDictionaries(dictionariesWithoutProgress);
+      setLoading(false);
+      
+      // Затем загружаем прогресс с сервера асинхронно (не блокируя UI)
+      loadProgressAsync(data);
     } catch (err) {
-      setError(err.message);
+      console.error('Error loading dictionaries:', err);
+      setError(err.message || "Ошибка при загрузке словарей");
       setDictionaries([]);
-    } finally {
       setLoading(false);
     }
+  };
+  
+  // Загружает прогресс асинхронно, не блокируя основной UI
+  const loadProgressAsync = async (dictionaries) => {
+    if (!dictionaries || dictionaries.length === 0) {
+      return;
+    }
+    
+    console.log('Loading progress async for', dictionaries.length, 'dictionaries');
+    
+    // Загружаем прогресс для каждого словаря параллельно, но с обработкой ошибок
+    const progressPromises = dictionaries.map(async (dict) => {
+      try {
+        // Быстрый таймаут - 2 секунды
+        const progressPromise = getProgress(
+          dict.id,
+          async (dictId) => {
+            try {
+              return await getLearningProgress(dictId);
+            } catch (error) {
+              console.warn(`Failed to get learning progress for dict ${dictId}:`, error);
+              return { learned_words: [] };
+            }
+          }
+        );
+        
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Timeout')), 2000)
+        );
+        
+        const progressData = await Promise.race([progressPromise, timeoutPromise]);
+        const learnedWords = Array.isArray(progressData) 
+          ? progressData 
+          : (progressData?.learned_words || []);
+        
+        // Сохраняем в localStorage для быстрого доступа
+        const progressKey = `dict_${dict.id}_progress`;
+        localStorage.setItem(progressKey, JSON.stringify(learnedWords));
+        
+        const progress = dict.word_count > 0 
+          ? Math.round((learnedWords.length / dict.word_count) * 100)
+          : 0;
+        
+        return {
+          id: dict.id,
+          learnedWordsCount: learnedWords.length,
+          progress: Math.min(progress, 100)
+        };
+      } catch (error) {
+        console.warn(`Failed to load progress for dictionary ${dict.id}:`, error);
+        // Возвращаем null, чтобы не обновлять прогресс для этого словаря
+        return null;
+      }
+    });
+    
+    // Ждем завершения всех загрузок прогресса (или таймаута)
+    const progressResults = await Promise.allSettled(progressPromises);
+    
+    // Обновляем прогресс для словарей, которые успешно загрузились
+    setDictionaries(prevDicts => {
+      const progressMap = new Map();
+      
+      // Создаем карту прогресса по ID словаря
+      progressResults.forEach((result, index) => {
+        if (result.status === 'fulfilled' && result.value && dictionaries[index]) {
+          progressMap.set(dictionaries[index].id, result.value);
+        }
+      });
+      
+      // Обновляем словари с загруженным прогрессом
+      return prevDicts.map(dict => {
+        const progress = progressMap.get(dict.id);
+        if (progress) {
+          return {
+            ...dict,
+            learnedWordsCount: progress.learnedWordsCount,
+            progress: progress.progress
+          };
+        }
+        return dict;
+      });
+    });
+    
+    console.log('Progress loading completed');
   };
 
   const handleDictionaryClick = (dictionaryId) => {
